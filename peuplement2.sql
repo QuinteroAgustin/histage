@@ -128,7 +128,8 @@ VALUES
 (19,'CONSEIL DEPARTEMENTAL DUTARN ET GARONNE','NA','NA',100,'Boulevard Hubert GouzeBP 783',82013,'MONTAUBAN','0563920333','NA','11111111111111'),
 (20,'EXM COMPAGNY','NA','NA',116,'Route d espagne Bal 513 - HELIOS 7',31100,'TOULOUSE','0561007989','sylvain.galant@company.com','11111111111111'),
 (21,'INP ENSIACET','NA','NA',4,'rue Emile Monso',31030,'TOULOUSE','040534322158','fabien.balet@ensiacet.fr','11111111111111'),
-(22,'PARTITIO','NA','NA',8,'rue Claude Marie Perroud',31100,'TOULOUSE','0534604294','mbouvart@partitio.com','11111111111111');
+(22,'PARTITIO','NA','NA',8,'rue Claude Marie Perroud',31100,'TOULOUSE','0534604294','mbouvart@partitio.com','11111111111111'),
+(23,'Limayrac','NA','NA',50,'rue de limayrac',31400,'TOULOUSE','NA','NA','11111111111111');
 
 INSERT INTO Eleve(`idUser`,`dateNaissanceEleve`,`dateRentreeEleve`,`numAdrEleve`,`villeAdrEleve`,`libAdrEleve`,`codePostalAdrEleve`,`idSection`)
 VALUES
@@ -184,4 +185,67 @@ INSERT INTO indicateur(idTypeIndicateur, idIndicateur, libTypeIndicateur) VALUES
 (3, 8, 'L’entreprise acceptera-t-elle cet étudiant en stage de 2ème année ? (durée de 6 à 8 semaines)'),
 (3, 9, 'Si non en acceptera-t-elle un autre ?'),
 (3, 10, 'L’entreprise acceptera-t-elle cet étudiant en stage de 1ème année ? (durée de 4 à 5 semaines) une année ultérieure'),
-(4, 11, 'Le responsable acceptera-t-il de participer à l’épreuve E6 en tant que jury ?').
+(4, 11, 'Le responsable acceptera-t-il de participer à l’épreuve E6 en tant que jury ?');
+
+INSERT INTO Stage(`idStage`,`titreStage`,`descriptifStage`,`dateDebutStage`,`dateFinStage`,`dureeHebdoStage`,`dateEvalStage`,`commentaireEvalStage`,`idEntreprise`,`idAnneeScolaire`)
+VALUES
+(1,'NA','NA','NA','NA','NA','NA','NA',1,2),
+(2,'NA','NA','NA','NA','NA','NA','NA',2,2),
+(3,'NA','NA','NA','NA','NA','NA','NA',3,2),
+(4,'NA','NA','NA','NA','NA','NA','NA',4,2),
+(5,'NA','NA','NA','NA','NA','NA','NA',5,2),
+(6,'NA','NA','NA','NA','NA','NA','NA',6,2),
+(7,'NA','NA','NA','NA','NA','NA','NA',7,2),
+(8,'NA','NA','NA','NA','NA','NA','NA',8,2),
+(9,'NA','NA','NA','NA','NA','NA','NA',9,2),
+(10,'NA','NA','NA','NA','NA','NA','NA',10,2),
+(11,'NA','NA','NA','NA','NA','NA','NA',11,2),
+(12,'NA','NA','NA','NA','NA','NA','NA',12,2),
+(13,'NA','NA','NA','NA','NA','NA','NA',13,2),
+(14,'NA','NA','NA','NA','NA','NA','NA',14,2),
+(15,'NA','NA','NA','NA','NA','NA','NA',15,2),
+(16,'NA','NA','NA','NA','NA','NA','NA',13,2),
+(17,'NA','NA','NA','NA','NA','NA','NA',16,2),
+(18,'NA','NA','NA','NA','NA','NA','NA',17,2),
+(19,'NA','NA','NA','NA','NA','NA','NA',13,2),
+(20,'NA','NA','NA','NA','NA','NA','NA',18,2),
+(21,'NA','NA','NA','NA','NA','NA','NA',2,2),
+(22,'NA','NA','NA','NA','NA','NA','NA',19,2),
+(23,'NA','NA','NA','NA','NA','NA','NA',20,2),
+(24,'NA','NA','NA','NA','NA','NA','NA',13,2),
+(25,'NA','NA','NA','NA','NA','NA','NA',8,2),
+(26,'NA','NA','NA','NA','NA','NA','NA',21,2),
+(27,'NA','NA','NA','NA','NA','NA','NA',22,2),
+(28,'NA','NA','NA','NA','NA','NA','NA',23,2),
+(29,'NA','NA','NA','NA','NA','NA','NA',23,2);
+
+INSERT INTO concerner(idUser, idStage) VALUES
+(4, 1),
+(5, 2),
+(6, 3),
+(7, 4),
+(8, 5),
+(9, 6),
+(10, 7),
+(11, 8),
+(12, 9),
+(13, 10),
+(14, 11),
+(15, 12),
+(16, 13),
+(17, 14),
+(18, 15),
+(19, 16),
+(20, 17),
+(21, 18),
+(22, 19),
+(23, 20),
+(24, 21),
+(25, 22),
+(26, 23),
+(27, 24),
+(28, 25),
+(29, 26),
+(30, 27),
+(1, 28),
+(2, 29),
