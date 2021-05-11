@@ -134,20 +134,11 @@ CREATE TABLE Eleve(
         villeAdrEleve      Varchar (50) NOT NULL ,
         libAdrEleve        Varchar (50) NOT NULL ,
         codePostalAdrEleve Int NOT NULL ,
-        mailUser           Varchar (60) NOT NULL ,
-        nomUser            Varchar (50) NOT NULL ,
-        prenomUser         Varchar (50) NOT NULL ,
-        telephoneUser      Varchar (12) NOT NULL ,
-        mobileUser         Varchar (12) NOT NULL ,
-        titreUser          Varchar (5) NOT NULL ,
-        mdpUser            Varchar (255) NOT NULL ,
         idSection          Int NOT NULL ,
-        idRole             Int NOT NULL
-	,CONSTRAINT Eleve_PK PRIMARY KEY (idUser)
+        CONSTRAINT Eleve_PK PRIMARY KEY (idUser)
 
 	,CONSTRAINT Eleve_Users_FK FOREIGN KEY (idUser) REFERENCES Users(idUser)
 	,CONSTRAINT Eleve_Section0_FK FOREIGN KEY (idSection) REFERENCES Section(idSection)
-	,CONSTRAINT Eleve_Role1_FK FOREIGN KEY (idRole) REFERENCES Role(idRole)
 )ENGINE=InnoDB;
 
 #------------------------------------------------------------
@@ -156,19 +147,10 @@ CREATE TABLE Eleve(
 
 CREATE TABLE Enseignant(
         idUser              Int NOT NULL ,
-        libMetierEnseignant Varchar (50) NOT NULL ,
-        mailUser            Varchar (60) NOT NULL ,
-        nomUser             Varchar (50) NOT NULL ,
-        prenomUser          Varchar (50) NOT NULL ,
-        telephoneUser       Varchar (12) NOT NULL ,
-        mobileUser          Varchar (12) NOT NULL ,
-        titreUser           Varchar (5) NOT NULL ,
-        mdpUser             Varchar (255) NOT NULL ,
-        idRole              Int NOT NULL
+        libMetierEnseignant Varchar (50) NOT NULL
 	,CONSTRAINT Enseignant_PK PRIMARY KEY (idUser)
 
 	,CONSTRAINT Enseignant_Users_FK FOREIGN KEY (idUser) REFERENCES Users(idUser)
-	,CONSTRAINT Enseignant_Role0_FK FOREIGN KEY (idRole) REFERENCES Role(idRole)
 )ENGINE=InnoDB;
 
 
@@ -180,20 +162,11 @@ CREATE TABLE Contact(
         idUser          Int NOT NULL ,
         statusContact   Varchar (1) NOT NULL ,
         fonctionContact Varchar (50) NOT NULL ,
-        mailUser        Varchar (60) NOT NULL ,
-        nomUser         Varchar (50) NOT NULL ,
-        prenomUser      Varchar (50) NOT NULL ,
-        telephoneUser   Varchar (12) NOT NULL ,
-        mobileUser      Varchar (12) NOT NULL ,
-        titreUser       Varchar (5) NOT NULL ,
-        mdpUser         Varchar (255) NOT NULL ,
-        idEntreprise    Int NOT NULL ,
-        idRole          Int NOT NULL
+        idEntreprise    Int NOT NULL
 	,CONSTRAINT Contact_PK PRIMARY KEY (idUser)
 
 	,CONSTRAINT Contact_Users_FK FOREIGN KEY (idUser) REFERENCES Users(idUser)
 	,CONSTRAINT Contact_Entreprise0_FK FOREIGN KEY (idEntreprise) REFERENCES Entreprise(idEntreprise)
-	,CONSTRAINT Contact_Role1_FK FOREIGN KEY (idRole) REFERENCES Role(idRole)
 )ENGINE=InnoDB;
 
 #------------------------------------------------------------
