@@ -1,134 +1,242 @@
-CREATE TABLE Role(
-   idRole INT  Auto_increment  NOT NULL,
-   libRole VARCHAR(50),
-   PRIMARY KEY(idRole)
-);
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
 
-CREATE TABLE AnneeScolaire(
-   idAnneeScolaire Int  Auto_increment  NOT NULL,
-   libAnneeScolaire VARCHAR(50),
-   PRIMARY KEY(idAnneeScolaire)
-);
 
-CREATE TABLE Entreprise(
-   idEntreprise Int  Auto_increment  NOT NULL,
-   nomEntreprise VARCHAR(50),
-   serviceEntreprise VARCHAR(25),
-   missionEntreprise VARCHAR(100),
-   numAdrEntreprise INT,
-   libAdrEntreprise VARCHAR(50),
-   codePostalEntreprise VARCHAR(10),
-   villeEntreprise VARCHAR(50),
-   telephoneEntreprise VARCHAR(15),
-   mailEntreprise VARCHAR(50),
-   siretEntreprise VARCHAR(30),
-   PRIMARY KEY(idEntreprise)
-);
-
-CREATE TABLE typeIndicateur(
-   idTypeIndicateur Int  Auto_increment  NOT NULL,
-   libelleTypeIndicateur VARCHAR(50),
-   PRIMARY KEY(idTypeIndicateur)
-);
+#------------------------------------------------------------
+# Table: Section
+#------------------------------------------------------------
 
 CREATE TABLE Section(
-   idSection Int  Auto_increment  NOT NULL,
-   libSection VARCHAR(50),
-   PRIMARY KEY(idSection)
-);
+        idSection  Int  Auto_increment  NOT NULL ,
+        libSection Varchar (50) NOT NULL
+	,CONSTRAINT Section_PK PRIMARY KEY (idSection)
+)ENGINE=InnoDB;
 
-CREATE TABLE Users(
-   idUser Int  Auto_increment  NOT NULL,
-   mailUser VARCHAR(50),
-   nomUser VARCHAR(50),
-   prenomUser VARCHAR(50),
-   telephoneUser VARCHAR(12),
-   mobileUser VARCHAR(15),
-   titreUser VARCHAR(50),
-   mdpUser VARCHAR(255),
-   idRole INT NOT NULL,
-   PRIMARY KEY(idUser),
-   FOREIGN KEY(idRole) REFERENCES Role(idRole)
-);
 
-CREATE TABLE Stages(
-   idStage Int  Auto_increment  NOT NULL,
-   titreStage VARCHAR(50),
-   descriptifStage VARCHAR(100),
-   dateDebutStage DATE,
-   dateFinStage DATE,
-   dureeHebdoStage INT,
-   deteEvalStage DATE,
-   commentaireEvalStage VARCHAR(50),
-   idAnneeScolaire INT NOT NULL,
-   idEntreprise INT NOT NULL,
-   PRIMARY KEY(idStage),
-   FOREIGN KEY(idAnneeScolaire) REFERENCES AnneeScolaire(idAnneeScolaire),
-   FOREIGN KEY(idEntreprise) REFERENCES Entreprise(idEntreprise)
-);
+#------------------------------------------------------------
+# Table: Entreprise
+#------------------------------------------------------------
 
-CREATE TABLE Eleve(
-   idUser INT,
-   dateNaissanceEleve DATE,
-   numAdrEleve INT,
-   villeAdrEleve VARCHAR(20),
-   dateRentreeEleve DATE,
-   libAdrELeve VARCHAR(50),
-   codePostalAdrEleve VARCHAR(10),
-   idSection INT NOT NULL,
-   PRIMARY KEY(idUser),
-   FOREIGN KEY(idUser) REFERENCES Users(idUser),
-   FOREIGN KEY(idSection) REFERENCES Section(idSection)
-);
+CREATE TABLE Entreprise(
+        idEntreprise         Int  Auto_increment  NOT NULL ,
+        nomEntreprise        Varchar (50) NOT NULL ,
+        serviceEntreprise    Varchar (50) NOT NULL ,
+        missionEntreprise    Varchar (100) NOT NULL ,
+        numAdrEntreprise     Int NOT NULL ,
+        libAdrEntreprise     Varchar (50) NOT NULL ,
+        codePostalEntreprise Int NOT NULL ,
+        villeEntreprise      Varchar (50) NOT NULL ,
+        telephoneEntreprise  Varchar (12) NOT NULL ,
+        mailEntreprise       Varchar (50) NOT NULL ,
+        siretEntreprise      Varchar (30) NOT NULL
+	,CONSTRAINT Entreprise_PK PRIMARY KEY (idEntreprise)
+)ENGINE=InnoDB;
 
-CREATE TABLE Contact(
-   idUser INT,
-   statusContact VARCHAR(1),
-   fonctionContact VARCHAR(50),
-   idEntreprise INT NOT NULL,
-   PRIMARY KEY(idUser),
-   FOREIGN KEY(idUser) REFERENCES Users(idUser),
-   FOREIGN KEY(idEntreprise) REFERENCES Entreprise(idEntreprise)
-);
 
-CREATE TABLE Enseignant(
-   idUser INT,
-   libMetierEnseignant VARCHAR(50),
-   PRIMARY KEY(idUser),
-   FOREIGN KEY(idUser) REFERENCES Users(idUser)
-);
+#------------------------------------------------------------
+# Table: TypeIndicateur
+#------------------------------------------------------------
+
+CREATE TABLE TypeIndicateur(
+        idTypeIndicateur  Int  Auto_increment  NOT NULL ,
+        libTypeIndicateur Varchar (50) NOT NULL
+	,CONSTRAINT TypeIndicateur_PK PRIMARY KEY (idTypeIndicateur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Indicateur
+#------------------------------------------------------------
 
 CREATE TABLE Indicateur(
-   idTypeIndicateur INT,
-   numeroIndic INT,
-   libelleIndic VARCHAR(50),
-   PRIMARY KEY(idTypeIndicateur, numeroIndic),
-   FOREIGN KEY(idTypeIndicateur) REFERENCES typeIndicateur(idTypeIndicateur)
-);
+        idTypeIndicateur Int NOT NULL ,
+        idIndicateur     Int NOT NULL ,
+        libIndicateur    Varchar (50) NOT NULL
+	,CONSTRAINT Indicateur_PK PRIMARY KEY (idTypeIndicateur,idIndicateur)
+
+	,CONSTRAINT Indicateur_TypeIndicateur_FK FOREIGN KEY (idTypeIndicateur) REFERENCES TypeIndicateur(idTypeIndicateur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: AnneeScolaire
+#------------------------------------------------------------
+
+CREATE TABLE AnneeScolaire(
+        idAnneeScolaire  Int  Auto_increment  NOT NULL ,
+        libAnneeScolaire Varchar (50) NOT NULL
+	,CONSTRAINT AnneeScolaire_PK PRIMARY KEY (idAnneeScolaire)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Stage
+#------------------------------------------------------------
+
+CREATE TABLE Stage(
+        idStage              Int  Auto_increment  NOT NULL ,
+        titreStage           Varchar (50) NOT NULL ,
+        descriptifStage      Varchar (100) NOT NULL ,
+        dateDebutStage       Date NOT NULL ,
+        dateFinStage         Date NOT NULL ,
+        dureeHebdoStage      Int NOT NULL ,
+        dateEvalStage        Date NOT NULL ,
+        commentaireEvalStage Varchar (50) NOT NULL ,
+        idEntreprise         Int NOT NULL ,
+        idAnneeScolaire      Int NOT NULL
+	,CONSTRAINT Stage_PK PRIMARY KEY (idStage)
+
+	,CONSTRAINT Stage_Entreprise_FK FOREIGN KEY (idEntreprise) REFERENCES Entreprise(idEntreprise)
+	,CONSTRAINT Stage_AnneeScolaire0_FK FOREIGN KEY (idAnneeScolaire) REFERENCES AnneeScolaire(idAnneeScolaire)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Role
+#------------------------------------------------------------
+
+CREATE TABLE Role(
+        idRole  Int  Auto_increment  NOT NULL ,
+        libRole Varchar (50) NOT NULL
+	,CONSTRAINT Role_PK PRIMARY KEY (idRole)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Users
+#------------------------------------------------------------
+
+CREATE TABLE Users(
+        idUser        Int  Auto_increment  NOT NULL ,
+        mailUser      Varchar (60) NOT NULL ,
+        nomUser       Varchar (50) NOT NULL ,
+        prenomUser    Varchar (50) NOT NULL ,
+        telephoneUser Varchar (12) NOT NULL ,
+        mobileUser    Varchar (12) NOT NULL ,
+        titreUser     Varchar (5) NOT NULL ,
+        mdpUser       Varchar (255) NOT NULL ,
+        idRole        Int NOT NULL
+	,CONSTRAINT Users_PK PRIMARY KEY (idUser)
+
+	,CONSTRAINT Users_Role_FK FOREIGN KEY (idRole) REFERENCES Role(idRole)
+)ENGINE=InnoDB;
+
+#------------------------------------------------------------
+# Table: Eleve
+#------------------------------------------------------------
+
+CREATE TABLE Eleve(
+        idUser             Int NOT NULL ,
+        dateNaissanceEleve Date NOT NULL ,
+        dateRentreeEleve   Date NOT NULL ,
+        numAdrEleve        Int NOT NULL ,
+        villeAdrEleve      Varchar (50) NOT NULL ,
+        libAdrEleve        Varchar (50) NOT NULL ,
+        codePostalAdrEleve Int NOT NULL ,
+        mailUser           Varchar (60) NOT NULL ,
+        nomUser            Varchar (50) NOT NULL ,
+        prenomUser         Varchar (50) NOT NULL ,
+        telephoneUser      Varchar (12) NOT NULL ,
+        mobileUser         Varchar (12) NOT NULL ,
+        titreUser          Varchar (5) NOT NULL ,
+        mdpUser            Varchar (255) NOT NULL ,
+        idSection          Int NOT NULL ,
+        idRole             Int NOT NULL
+	,CONSTRAINT Eleve_PK PRIMARY KEY (idUser)
+
+	,CONSTRAINT Eleve_Users_FK FOREIGN KEY (idUser) REFERENCES Users(idUser)
+	,CONSTRAINT Eleve_Section0_FK FOREIGN KEY (idSection) REFERENCES Section(idSection)
+	,CONSTRAINT Eleve_Role1_FK FOREIGN KEY (idRole) REFERENCES Role(idRole)
+)ENGINE=InnoDB;
+
+#------------------------------------------------------------
+# Table: Enseignant
+#------------------------------------------------------------
+
+CREATE TABLE Enseignant(
+        idUser              Int NOT NULL ,
+        libMetierEnseignant Varchar (50) NOT NULL ,
+        mailUser            Varchar (60) NOT NULL ,
+        nomUser             Varchar (50) NOT NULL ,
+        prenomUser          Varchar (50) NOT NULL ,
+        telephoneUser       Varchar (12) NOT NULL ,
+        mobileUser          Varchar (12) NOT NULL ,
+        titreUser           Varchar (5) NOT NULL ,
+        mdpUser             Varchar (255) NOT NULL ,
+        idRole              Int NOT NULL
+	,CONSTRAINT Enseignant_PK PRIMARY KEY (idUser)
+
+	,CONSTRAINT Enseignant_Users_FK FOREIGN KEY (idUser) REFERENCES Users(idUser)
+	,CONSTRAINT Enseignant_Role0_FK FOREIGN KEY (idRole) REFERENCES Role(idRole)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Contact
+#------------------------------------------------------------
+
+CREATE TABLE Contact(
+        idUser          Int NOT NULL ,
+        statusContact   Varchar (1) NOT NULL ,
+        fonctionContact Varchar (50) NOT NULL ,
+        mailUser        Varchar (60) NOT NULL ,
+        nomUser         Varchar (50) NOT NULL ,
+        prenomUser      Varchar (50) NOT NULL ,
+        telephoneUser   Varchar (12) NOT NULL ,
+        mobileUser      Varchar (12) NOT NULL ,
+        titreUser       Varchar (5) NOT NULL ,
+        mdpUser         Varchar (255) NOT NULL ,
+        idEntreprise    Int NOT NULL ,
+        idRole          Int NOT NULL
+	,CONSTRAINT Contact_PK PRIMARY KEY (idUser)
+
+	,CONSTRAINT Contact_Users_FK FOREIGN KEY (idUser) REFERENCES Users(idUser)
+	,CONSTRAINT Contact_Entreprise0_FK FOREIGN KEY (idEntreprise) REFERENCES Entreprise(idEntreprise)
+	,CONSTRAINT Contact_Role1_FK FOREIGN KEY (idRole) REFERENCES Role(idRole)
+)ENGINE=InnoDB;
+
+#------------------------------------------------------------
+# Table: concerner
+#------------------------------------------------------------
 
 CREATE TABLE concerner(
-   idUser INT,
-   idStage INT,
-   PRIMARY KEY(idUser, idStage),
-   FOREIGN KEY(idUser) REFERENCES Users(idUser),
-   FOREIGN KEY(idStage) REFERENCES Stages(idStage)
-);
+        idUser  Int NOT NULL ,
+        idStage Int NOT NULL
+	,CONSTRAINT concerner_PK PRIMARY KEY (idUser,idStage)
+
+	,CONSTRAINT concerner_Users_FK FOREIGN KEY (idUser) REFERENCES Users(idUser)
+	,CONSTRAINT concerner_Stage0_FK FOREIGN KEY (idStage) REFERENCES Stage(idStage)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: evaluer
+#------------------------------------------------------------
 
 CREATE TABLE evaluer(
-   idStage INT,
-   idTypeIndicateur INT,
-   numeroIndic INT,
-   repCategorieIndic Bool NOT NULL,
-   PRIMARY KEY(idStage, idTypeIndicateur, numeroIndic),
-   FOREIGN KEY(idStage) REFERENCES Stages(idStage),
-   FOREIGN KEY(idTypeIndicateur, numeroIndic) REFERENCES Indicateur(idTypeIndicateur, numeroIndic)
-);
+        idTypeIndicateur       Int NOT NULL ,
+        idIndicateur           Int NOT NULL ,
+        idStage                Int NOT NULL ,
+        repCategorieIndicateur Bool NOT NULL
+	,CONSTRAINT evaluer_PK PRIMARY KEY (idTypeIndicateur,idIndicateur,idStage)
+
+	,CONSTRAINT evaluer_Indicateur_FK FOREIGN KEY (idTypeIndicateur,idIndicateur) REFERENCES Indicateur(idTypeIndicateur,idIndicateur)
+	,CONSTRAINT evaluer_Stage0_FK FOREIGN KEY (idStage) REFERENCES Stage(idStage)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: gerer
+#------------------------------------------------------------
 
 CREATE TABLE gerer(
-   idUser INT,
-   idSection INT,
-   isRs Bool NOT NULL,
-   PRIMARY KEY(idUser, idSection),
-   FOREIGN KEY(idUser) REFERENCES Enseignant(idUser),
-   FOREIGN KEY(idSection) REFERENCES Section(idSection)
-);
+        idSection Int NOT NULL ,
+        idUser    Int NOT NULL ,
+        isRs      Bool NOT NULL
+	,CONSTRAINT gerer_PK PRIMARY KEY (idSection,idUser)
+
+	,CONSTRAINT gerer_Section_FK FOREIGN KEY (idSection) REFERENCES Section(idSection)
+	,CONSTRAINT gerer_Enseignant0_FK FOREIGN KEY (idUser) REFERENCES Enseignant(idUser)
+)ENGINE=InnoDB;
+
