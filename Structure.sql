@@ -52,7 +52,7 @@ CREATE TABLE TypeIndicateur(
 CREATE TABLE Indicateur(
         idTypeIndicateur Int NOT NULL ,
         idIndicateur     Int NOT NULL ,
-        libIndicateur    Varchar (100) NOT NULL
+        libIndicateur    Varchar (200) NOT NULL
 	,CONSTRAINT Indicateur_PK PRIMARY KEY (idTypeIndicateur,idIndicateur)
 
 	,CONSTRAINT Indicateur_TypeIndicateur_FK FOREIGN KEY (idTypeIndicateur) REFERENCES TypeIndicateur(idTypeIndicateur)
