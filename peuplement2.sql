@@ -58,6 +58,8 @@ VALUES
 ('sylvain.galant@company.com','GALANT','Sylvain','0561007989','0500000000','M.','12345',4),
 ('marie@pixbulle.com','CICAL','Marie-Hélène','0500000000','0761911982','Mme.','12345',4),
 ('fabien.balet@ensiacet.fr','BALET','Fabien','0534323300','0500000000','M.','12345',4),
-('mbouvart@partitio.com','BOUVART','Manuel','0500000000','0500000000','M.','12345',4),
+('mbouvart@partitio.com','BOUVART','Manuel','0500000000','0500000000','M.','12345',4);
 
-('','','','0500000000','','M.','12345',4);
+INSERT INTO enseignant(`idUser`,`libMetierEnseignant`)
+VALUES
+('3','BDD');
