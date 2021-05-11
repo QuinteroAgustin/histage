@@ -174,7 +174,7 @@ INSERT INTO typeindicateur(idTypeIndicateur, libTypeIndicateur) VALUES
 (5, 'Epreuve E6'),
 (6, 'Commentaires autres');
 
-INSERT INTO indicateur(idTypeIndicateur, idIndicateur, libTypeIndicateur) VALUES
+INSERT INTO indicateur(idTypeIndicateur, idIndicateur, libIndicateur) VALUES
 (1, 1, 'Absences'),
 (1, 2, 'Retards'),
 (1, 3, 'Intégration au sein de l équipe'),
@@ -248,4 +248,4 @@ INSERT INTO concerner(idUser, idStage) VALUES
 (29, 26),
 (30, 27),
 (1, 28),
-(2, 29),
+(2, 29);
