@@ -130,7 +130,7 @@ VALUES
 (21,'INP ENSIACET','NA','NA',4,'rue Emile Monso',31030,'TOULOUSE','040534322158','fabien.balet@ensiacet.fr','11111111111111'),
 (22,'PARTITIO','NA','NA',8,'rue Claude Marie Perroud',31100,'TOULOUSE','0534604294','mbouvart@partitio.com','11111111111111');
 
-INSERT INTO Eleve(`idUser`,`dateNaissanceEleve`,`dateRentreeEleve`,`numAdrEleve`,`villeAdrEleve`,`libAdrEleve`,`codePostalAdrEleve`,`isSection`)
+INSERT INTO Eleve(`idUser`,`dateNaissanceEleve`,`dateRentreeEleve`,`numAdrEleve`,`villeAdrEleve`,`libAdrEleve`,`codePostalAdrEleve`,`idSection`)
 VALUES
 (1, '1998-08-31', '2021-05-10', 0, 'NA', 'NA', 31000, 1),
 (2, '2001-01-11', '2021-05-10', 0, 'NA', 'NA', 31000, 1),
@@ -160,4 +160,28 @@ VALUES
 (27, '2000-07-14', '2021-01-04', 0, 'NA', 'NA', 31000, 1),
 (28, '2002-09-29', '2021-05-10', 0, 'NA', 'NA', 31000, 1),
 (29, '2001-01-16', '2021-05-10', 0, 'NA', 'NA', 31000, 1),
-(30, '1996-12-29', '2021-01-04', 0, 'NA', 'NA', 31000, 1),
+(30, '1996-12-29', '2021-01-04', 0, 'NA', 'NA', 31000, 1);
+
+INSERT INTO anneescolaire(idAnneeScolaire, libAnneeScolaire) VALUES
+(1, '2019-2020'),
+(2, '2020-2021');
+
+INSERT INTO typeindicateur(idTypeIndicateur, libTypeIndicateur) VALUES
+(1, 'Evaluation du comportement'),
+(2, 'Evaluation du travail realise'),
+(3, 'Futur'),
+(5, 'Epreuve E6'),
+(6, 'Commentaires autres');
+
+INSERT INTO indicateur(idTypeIndicateur, idIndicateur, libTypeIndicateur) VALUES
+(1, 1, 'Absences'),
+(1, 2, 'Retards'),
+(1, 3, 'Intégration au sein de l équipe'),
+(2, 4, 'Autonomie'),
+(2, 5, 'Adaptation'),
+(2, 6, 'Réalisation satisfaisante'),
+(2, 7, 'Curiosité'),
+(3, 8, 'L’entreprise acceptera-t-elle cet étudiant en stage de 2ème année ? (durée de 6 à 8 semaines)'),
+(3, 9, 'Si non en acceptera-t-elle un autre ?'),
+(3, 10, 'L’entreprise acceptera-t-elle cet étudiant en stage de 1ème année ? (durée de 4 à 5 semaines) une année ultérieure'),
+(4, 11, 'Le responsable acceptera-t-il de participer à l’épreuve E6 en tant que jury ?').
