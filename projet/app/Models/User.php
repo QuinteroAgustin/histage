@@ -3,7 +3,10 @@
 namespace App\Models;
 
 use App\Models\Role;
+use App\Models\Eleve;
 use App\Models\Stage;
+use App\Models\Contact;
+use App\Models\Enseignant;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -60,4 +63,18 @@ class User extends Authenticatable
 
     //trouver comment faire pour savoir si l'user est un eleve, enseignant ou contact
     //avec une fonction
+    public function eleve()
+    { 
+        return $this->belongsTo(Eleve::class); 
+    }
+
+    public function contact()
+    { 
+        return $this->belongsTo(Contact::class); 
+    }
+
+    public function enseignant()
+    { 
+        return $this->belongsTo(Enseignant::class); 
+    }
 }
