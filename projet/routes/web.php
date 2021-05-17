@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,5 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'accueil'])->name('home');
+Route::get('/inscription', [UsersController::class, 'inscription'])->name('inscription');
+Route::get('/connexion', [UsersController::class, 'connexion'])->name('connexion');

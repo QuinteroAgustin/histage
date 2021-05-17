@@ -15,8 +15,8 @@
         @section('sidebar')
         <ul class="bg-white">
             <li><a class="" href="{{ route('home') }}">Accueil</a></li>
-            <li><a class="" href="{{ route('home') }}">Connexion</a></li>
-            <li><a class="" href="{{ route('home') }}">Inscription</a></li>
+            <li><a class="" href="{{ route('connexion') }}">Connexion</a></li>
+            <li><a class="" href="{{ route('inscription') }}">Inscription</a></li>
         </ul>
         @show
 

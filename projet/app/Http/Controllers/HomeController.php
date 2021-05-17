@@ -17,10 +17,4 @@ class HomeController extends Controller
     {
         return view('home.accueil');
     }
-
-    public function test()
-    {
-        $id=["aa", "bb", "cc"];
-        return view('home.accueil', ["test" => $id]);
-    }
 }
