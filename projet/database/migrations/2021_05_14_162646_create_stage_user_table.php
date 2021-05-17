@@ -17,17 +17,17 @@ class CreateStageUserTable extends Migration
         Schema::create('stage_user', function (Blueprint $table) {
             $table->id();
             
-            $table->unsignedBigInteger('user_id')->index();
-            $table->foreign('user_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
-            
             $table->unsignedBigInteger('stage_id')->index();
             $table->foreign('stage_id')
             ->references('id')
             ->on('stages')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
+            $table->unsignedBigInteger('user_id')->index();
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 

@@ -17,13 +17,6 @@ class CreateIndicateurStageTable extends Migration
         Schema::create('indicateur_stage', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('typeindicateur_id');
-            $table->foreign('typeindicateur_id')
-            ->references('id')
-            ->on('typeindicateurs')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
-
             $table->unsignedBigInteger('indicateur_id');
             $table->foreign('indicateur_id')
             ->references('id')
@@ -35,6 +28,13 @@ class CreateIndicateurStageTable extends Migration
             $table->foreign('stage_id')
             ->references('id')
             ->on('stages')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
+            $table->unsignedBigInteger('typeindicateur_id');
+            $table->foreign('typeindicateur_id')
+            ->references('id')
+            ->on('typeindicateurs')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             

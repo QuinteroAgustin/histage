@@ -29,8 +29,8 @@ class DatabaseSeeder extends Seeder
         Enseignant::factory(10)->create();
         Contact::factory(10)->create();
         Anneescolaire::factory(3)->create();
-        Stage::factory(10)->create();
         Typeindicateur::factory(10)->create();
         Indicateur::factory(100)->create();
+        Stage::factory(10)->create();
     }
 }

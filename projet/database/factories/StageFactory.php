@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Anneescolaire;
 use App\Models\Entreprise;
+use App\Models\Indicateur;
 use App\Models\Stage;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

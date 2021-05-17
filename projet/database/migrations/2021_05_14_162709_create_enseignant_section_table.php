@@ -17,17 +17,17 @@ class CreateEnseignantSectionTable extends Migration
         Schema::create('enseignant_section', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('section_id');
-            $table->foreign('section_id')
-            ->references('id')
-            ->on('sections')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
-
             $table->unsignedBigInteger('enseignant_id');
             $table->foreign('enseignant_id')
             ->references('id')
             ->on('enseignants')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
+            $table->unsignedBigInteger('section_id');
+            $table->foreign('section_id')
+            ->references('id')
+            ->on('sections')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
