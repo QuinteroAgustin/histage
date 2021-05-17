@@ -24,7 +24,7 @@ class EleveFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory()->create()->id,
+            'id' => User::factory()->create()->id,
             'dateNaissanceEleve' => $this->faker->date(),
             'dateRentreeEleve' => $this->faker->date(),
             'dateRentreeEleve' => $this->faker->date(),

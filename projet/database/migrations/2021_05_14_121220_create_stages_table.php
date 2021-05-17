@@ -13,6 +13,7 @@ class CreateStagesTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('stages', function (Blueprint $table) {
             $table->id();
             $table->string('titreStage');
@@ -20,8 +21,8 @@ class CreateStagesTable extends Migration
             $table->date('dateDebutStage');
             $table->date('dateFinStage');
             $table->integer('dureeHebdoStage');
-            $table->date('dateEvalStage');
-            $table->string('commentaireEvalStage');
+            $table->date('dateEvalStage')->nullable();
+            $table->string('commentaireEvalStage')->nullable();
 
             $table->unsignedBigInteger('anneescolaire_id');
             $table->foreign('anneescolaire_id')

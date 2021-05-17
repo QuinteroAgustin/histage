@@ -13,15 +13,18 @@ class CreateIndicateursTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('indicateurs', function (Blueprint $table) {
             $table->id();
             $table->string('libIndicateur');
+            
             $table->unsignedBigInteger('typeindicateur_id');
             $table->foreign('typeindicateur_id')
             ->references('id')
             ->on('typeindicateurs')
             ->onDelete('restrict')
             ->onUpdate('restrict');
+            
             $table->timestamps();
         });
     }

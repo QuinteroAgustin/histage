@@ -13,7 +13,10 @@ class CreateIndicateurStageTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('indicateur_stage', function (Blueprint $table) {
+            $table->id();
+
             $table->unsignedBigInteger('typeindicateur_id');
             $table->foreign('typeindicateur_id')
             ->references('id')
@@ -27,8 +30,6 @@ class CreateIndicateurStageTable extends Migration
             ->on('indicateurs')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            
-            $table->primary(['indicateur_id', 'typeindicateur_id']);
 
             $table->unsignedBigInteger('stage_id');
             $table->foreign('stage_id')
@@ -37,7 +38,7 @@ class CreateIndicateurStageTable extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');
             
-            $table->boolean('repCategorieIndicateur');
+            $table->boolean('repCategorieIndicateur')->default(0);
             $table->timestamps();
         });
     }

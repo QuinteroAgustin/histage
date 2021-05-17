@@ -25,7 +25,7 @@ class ContactFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory()->create()->id,
+            'id' => User::factory()->create()->id,
             'statusContact' => Str::random(1),
             'fonctionContact' => Str::random(15),
             'entreprise_id' => Entreprise::factory()->create()->id,

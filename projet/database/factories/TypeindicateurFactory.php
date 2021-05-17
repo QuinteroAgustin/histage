@@ -22,7 +22,7 @@ class TypeindicateurFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'libTypeIndicateur' => $this->faker->realText(100),
         ];
     }
 }

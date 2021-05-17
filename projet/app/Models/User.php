@@ -65,16 +65,16 @@ class User extends Authenticatable
     //avec une fonction
     public function eleve()
     { 
-        return $this->belongsTo(Eleve::class); 
+        return $this->hasOne(Eleve::class); 
     }
 
     public function contact()
     { 
-        return $this->belongsTo(Contact::class); 
+        return $this->hasOne(Contact::class); 
     }
 
     public function enseignant()
     { 
-        return $this->belongsTo(Enseignant::class); 
+        return $this->hasOne(Enseignant::class); 
     }
 }

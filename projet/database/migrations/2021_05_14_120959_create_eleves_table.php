@@ -15,12 +15,13 @@ class CreateElevesTable extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::create('eleves', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->primary();
-            $table->foreign('user_id')
+            $table->unsignedBigInteger('id')->primary();
+            $table->foreign('id')
             ->references('id')
             ->on('users')
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
             $table->date('dateNaissanceEleve');
             $table->date('dateRentreeEleve');
             $table->integer('numAdrEleve');

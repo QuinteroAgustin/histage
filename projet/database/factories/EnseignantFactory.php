@@ -23,7 +23,7 @@ class EnseignantFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory()->create()->id,
+            'id' => User::factory()->create()->id,
             'libMetierEnseignant' => $this->faker->jobTitle(),
         ];
     }

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Indicateur;
+use App\Models\Typeindicateur;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class IndicateurFactory extends Factory
@@ -22,7 +23,8 @@ class IndicateurFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'libIndicateur' => $this->faker->realText(100),
+            'typeindicateur_id' => Typeindicateur::all()->random()->id,
         ];
     }
 }

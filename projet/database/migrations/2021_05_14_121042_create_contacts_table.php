@@ -13,13 +13,14 @@ class CreateContactsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('contacts', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->primary();
-            $table->foreign('user_id')
+            $table->unsignedBigInteger('id')->primary();
+            $table->foreign('id')
             ->references('id')
             ->on('users')
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             
             $table->string('statusContact', 1);
             $table->string('fonctionContact');

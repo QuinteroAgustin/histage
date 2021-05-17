@@ -13,22 +13,25 @@ class CreateEnseignantSectionTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('enseignant_section', function (Blueprint $table) {
-            $table->unsignedBigInteger('section_id')->primary();
+            $table->id();
+
+            $table->unsignedBigInteger('section_id');
             $table->foreign('section_id')
             ->references('id')
             ->on('sections')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
+            $table->unsignedBigInteger('enseignant_id');
+            $table->foreign('enseignant_id')
             ->references('id')
             ->on('enseignants')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
-            $table->boolean('isRs');
+            $table->boolean('isRs')->default(0);
             $table->timestamps();
         });
     }

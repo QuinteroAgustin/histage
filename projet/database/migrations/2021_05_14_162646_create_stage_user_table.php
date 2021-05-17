@@ -13,15 +13,18 @@ class CreateStageUserTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('stage_user', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->primary();
+            $table->id();
+            
+            $table->unsignedBigInteger('user_id')->index();
             $table->foreign('user_id')
             ->references('id')
             ->on('users')
             ->onDelete('cascade')
             ->onUpdate('cascade');
             
-            $table->unsignedBigInteger('stage_id');
+            $table->unsignedBigInteger('stage_id')->index();
             $table->foreign('stage_id')
             ->references('id')
             ->on('stages')

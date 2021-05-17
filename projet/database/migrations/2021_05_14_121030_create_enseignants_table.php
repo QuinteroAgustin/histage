@@ -13,13 +13,14 @@ class CreateEnseignantsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('enseignants', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->primary();
-            $table->foreign('user_id')
+            $table->unsignedBigInteger('id')->primary();
+            $table->foreign('id')
             ->references('id')
             ->on('users')
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
 
             $table->string('libMetierEnseignant');
             $table->timestamps();
