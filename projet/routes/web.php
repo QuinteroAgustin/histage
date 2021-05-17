@@ -17,4 +17,7 @@ use App\Http\Controllers\UsersController;
 
 Route::get('/', [HomeController::class, 'accueil'])->name('home');
 Route::get('/inscription', [UsersController::class, 'inscription'])->name('inscription');
-Route::get('/connexion', [UsersController::class, 'connexion'])->name('connexion');
+Route::get('/connexion', [UsersController::class, 'connexion'])->middleware('notAuth')->name('connexion');
+Route::post('/connexion', [UsersController::class, 'connexionPost'])->middleware('notAuth')->name('connexionPost');
+Route::get('/profil', [UsersController::class, 'profil'])->middleware('isAuth')->name('profil');
+Route::post('/profil', [UsersController::class, 'deconnexion'])->middleware('isAuth')->name('deconnexion');
