@@ -5,43 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Histage - @yield('title')</title>
-    <!-- Tailwind CSS -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <!-- Bootstrap CSS -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">-->
+    
 </head>
-<body class="h-full">
-    <div class="bg-gray-200 flex h-full">
+<body class="h-full bg-gray-200">
+    <div class="">
         @section('sidebar')
-        <ul class="p-4 w-32 bg-white">
-            <li><a class="" href="{{ route('home') }}">Accueil</a></li>
-            <li><a class="" href="{{ route('connexion') }}">Connexion</a></li>
-            
-            @if(session()->exists('user'))
-            <li><a class="" href="{{ route('profil') }}">Profil</a></li>
-            <li><form action="{{ route('deconnexion') }}" method="POST">@csrf<button>Déconnexion</button></form></li>
-            @endif
-            
-            <!-- <li><a class="" href="{{ route('inscription') }}">Inscription</a></li> -->
-        </ul>
+            <ul class="p-4 w-full bg-white grid grid-cols-3">
+                <li class="place-self-start"><a class="" href="{{ route('home') }}">Accueil</a></li>
+                @if(session()->exists('user'))
+                    <li class=" place-self-end"><a class="" href="{{ route('profil') }}">Profil</a></li>
+                    <li class="flex-1 place-self-end"><form action="{{ route('deconnexion') }}" method="POST">@csrf<button>Déconnexion</button></form></li>
+                @else
+                    <li class="place-self-end"><a class="" href="{{ route('connexion') }}">Connexion</a></li>
+                @endif
+            </ul>
         @show
+    </div>
+    <div class="flex justify-between">
+        <div class="">
 
-        @if(session()->exists('messages'))
-        <div class="bg-red-100 h-12 flow-root border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-            @foreach (session()->get('messages') as $key => $message)
-            <strong class="font-bold">{{ $key }}</strong>
-            <span class="block sm:inline">{{ $message }}</span>
-            @endforeach
         </div>
-        @endif
 
-        <div class="flex">
+        <div class="">
+            <!-- Messages -->
+            @if(session()->exists('messages'))
+                <div class="bg-red-100 h-12 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    @foreach (session()->get('messages') as $key => $message)
+                        <strong class="font-bold">{{ $key }}</strong>
+                        <span class="block sm:inline">{{ $message }}</span>
+                    @endforeach
+                </div>
+            @endif
+            <!-- Laisse la place pour le content de la page qui va etre appelé -->
             @yield('content')
         </div>
+
+        <div class="">
+
+        </div>
     </div>
-    
     <script src="{{ asset('js/app.js') }}"></script>
-    <!-- Bootstrap JS -->
-    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>-->
 </body>
 </html>
