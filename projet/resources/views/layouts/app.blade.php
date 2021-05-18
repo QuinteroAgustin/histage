@@ -9,38 +9,64 @@
     
 </head>
 <body class="h-full bg-gray-200">
-    <div class="">
-        @section('sidebar')
-            <ul class="p-4 w-full bg-white grid grid-cols-3">
-                <li class="place-self-start"><a class="" href="{{ route('home') }}">Accueil</a></li>
-                @if(session()->exists('user'))
-                    <li class=" place-self-end"><a class="" href="{{ route('profil') }}">Profil</a></li>
-                    <li class="flex-1 place-self-end"><form action="{{ route('deconnexion') }}" method="POST">@csrf<button>Déconnexion</button></form></li>
-                @else
-                    <li class="place-self-end"><a class="" href="{{ route('connexion') }}">Connexion</a></li>
-                @endif
-            </ul>
-        @show
-    </div>
-    <div class="flex justify-between">
-        <div class="">
-
+    <!-- Navbar -->
+    @section('sidebar')
+    <div class="flex bg-white mb-2 py-5 pl-5">
+        <div class="flex items-center text-2xl font-semibold">
+            <p>Histage</p>
         </div>
-
-        <div class="">
-            <!-- Messages -->
-            @if(session()->exists('messages'))
-                <div class="bg-red-100 h-12 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                    @foreach (session()->get('messages') as $key => $message)
-                        <strong class="font-bold">{{ $key }}</strong>
-                        <span class="block sm:inline">{{ $message }}</span>
-                    @endforeach
+        <div class="flex-grow text-gray-400 ml-4 flex items-center space-x-4">
+            <a href="{{ route('home') }}">Accueil</a>
+            <a href="#">Administrateur</a>
+            <a href="#">Enseignant</a>
+            <a href="#">Etudiant</a>
+        </div>
+        <div class="mr-5 flex items-center">
+            @if(session()->exists('user'))
+            <div class="relative inline-block text-left">
+                <button id="menuprofilbutton">
+                    <div class="rounded-full bg-gray-400 w-8 h-8">
+                        <img class="flex-1 rounded-full w-full h-8 object-cover md:h-full" src="https://picsum.photos/200/300" alt="">
+                    </div>
+                </button>
+                <div class="hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="menuprofil">
+                    <div class="py-1">
+                        <a href="{{ route('profil') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">Profil</a>
+                        <a href="{{ route('deconnexion') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">Déconnexion</a>
+                    </div>
                 </div>
+            </div>
+            @else
+                <a class="" href="{{ route('connexion') }}">Connexion</a>
             @endif
+        </div>
+    </div>
+    @show
+
+    <!-- Messages -->
+    @if(session()->exists('messages'))
+        <div class="bg-red-100 w-auto h-auto border border-red-400 text-red-700 m-2 px-4 py-3 rounded relative" role="alert" id="alert-message">
+            @foreach (session()->get('messages') as $key => $message)
+                <strong class="font-bold">{{ $key }}</strong>
+                <span class="block sm:inline">{{ $message }}</span>
+            @endforeach
+            {{ session()->forget('messages') }}
+            <button class="" id="alert">X</button>
+        </div>
+    @endif
+
+    <!-- sous la navbar -->
+    <div class="flex justify-between">
+        <!-- Gauche -->
+        <div class="">
+            
+        </div>
+        <!-- Milieu -->
+        <div class="">
             <!-- Laisse la place pour le content de la page qui va etre appelé -->
             @yield('content')
         </div>
-
+        <!-- Droite -->
         <div class="">
 
         </div>
