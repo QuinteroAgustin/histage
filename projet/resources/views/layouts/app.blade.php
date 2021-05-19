@@ -45,14 +45,19 @@
 
     <!-- Messages -->
     @if(session()->exists('messages'))
-        <div class="bg-red-100 w-auto h-auto border border-red-400 text-red-700 m-2 px-4 py-3 rounded relative" role="alert" id="alert-message">
-            @foreach (session()->get('messages') as $key => $message)
+    @foreach (session()->get('messages') as $key => $message)
+        @if ($key == 'Erreur')
+            <div class="bg-red-100 w-auto h-auto border border-red-400 text-red-700 m-2 px-4 py-3 rounded relative" role="alert" id="alert-message">
+        @else
+            <div class="bg-green-100 w-auto h-auto border border-green-400 text-green-700 m-2 px-4 py-3 rounded relative" role="alert" id="alert-message">
+        @endif
                 <strong class="font-bold">{{ $key }}</strong>
                 <span class="block sm:inline">{{ $message }}</span>
-            @endforeach
+            
             {{ session()->forget('messages') }}
             <button class="" id="alert">X</button>
         </div>
+        @endforeach
     @endif
 
     <!-- sous la navbar -->

@@ -9,6 +9,7 @@
                     <div class="mb-4 text-gray-600">
                         <p>Bienvenue {{ $user->emailUser }}</p>
                     </div>
+                    <a href="{{ route('editpassword') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-green-500">Moddifier mot de passe</a>
                 </div>
         </div>
     </div>

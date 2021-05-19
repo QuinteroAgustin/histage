@@ -16,7 +16,13 @@ use App\Http\Controllers\UsersController;
 */
 
 Route::get('/', [HomeController::class, 'accueil'])->name('home');
+
 Route::get('/connexion', [UsersController::class, 'connexion'])->middleware('notAuth')->name('connexion');
 Route::post('/connexion', [UsersController::class, 'connexionPost'])->middleware('notAuth')->name('connexionPost');
+
 Route::get('/profil', [UsersController::class, 'profil'])->middleware('isAuth')->name('profil');
-Route::get('/deconnexion', [UsersController::class, 'deconnexion'])->middleware('isAuth')->name('deconnexion');
+
+Route::get('/profil/edit-password', [UsersController::class, 'editpassword'])->middleware('isAuth')->name('editpassword');
+Route::post('/profil/edit-password', [UsersController::class, 'editpasswordPost'])->middleware('isAuth')->name('editpasswordPost');
+
+Route::get('/profil/deconnexion', [UsersController::class, 'deconnexion'])->middleware('isAuth')->name('deconnexion');
