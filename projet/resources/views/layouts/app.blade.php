@@ -17,9 +17,44 @@
         </div>
         <div class="flex-grow text-gray-400 ml-4 flex items-center space-x-4">
             <a href="{{ route('home') }}">Accueil</a>
-            <a href="#">Administrateur</a>
-            <a href="#">Enseignant</a>
-            <a href="#">Etudiant</a>
+            <div class="relative inline-block text-left">
+                <button id="menuadministrateur-btn">Administrateur</button>
+                <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownadministrateur">
+                    <div class="py-1">
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">créer un user</a>
+                    </div>
+                </div>
+            </div>
+            <div class="relative inline-block text-left">
+                <button id="menuenseignant-btn">Enseignant</button>
+                <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownenseignant">
+                    <div class="py-1">
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">notation</a>
+                    </div>
+                </div>
+            </div>
+            <div class="relative inline-block text-left">
+                <button id="menuetudiant-btn">Etudiant</button>
+                <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownetudiant">
+                    <div class="py-1">
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">mes stages</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">mes contacts</a>
+                    </div>
+                </div>
+            </div>
+            <div class="relative inline-block text-left">
+                <button id="menurs-btn">Rs</button>
+                <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownrs">
+                    <div class="py-1">
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">Entreprises</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">Stages</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">Années scolaires</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="mr-5 flex items-center">
             @if(session()->exists('user'))
@@ -47,9 +82,9 @@
     @if(session()->exists('messages'))
     @foreach (session()->get('messages') as $key => $message)
         @if ($key == 'Erreur')
-            <div class="bg-red-100 w-auto h-auto border border-red-400 text-red-700 m-2 px-4 py-3 rounded relative" role="alert" id="alert-message">
+            <div class="bg-red-100 w-auto h-auto border border-red-400 text-red-700 m-2 px-4 py-3 rounded" role="alert" id="alert-message">
         @else
-            <div class="bg-green-100 w-auto h-auto border border-green-400 text-green-700 m-2 px-4 py-3 rounded relative" role="alert" id="alert-message">
+            <div class="bg-green-100 w-auto h-auto border border-green-400 text-green-700 m-2 px-4 py-3 rounded" role="alert" id="alert-message">
         @endif
                 <strong class="font-bold">{{ $key }}</strong>
                 <span class="block sm:inline">{{ $message }}</span>

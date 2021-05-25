@@ -5,7 +5,6 @@
         <form action="{{ route('editpasswordPost') }}" method="POST">
             @csrf
         <div class="bg-white shadow-lg max-w-lg md:flex">
-            <img class="flex-1 w-full h-40 object-cover md:h-full" src="https://picsum.photos/200/300" alt="">
             <div class="p-4 flex-1 md:flex md:flex-col justify-center">
                 <h1 class="text-2xl font-bold text-gray-800 mb-2">Moddifier mon mot de passe</h1>
                 <div class="mb-4">

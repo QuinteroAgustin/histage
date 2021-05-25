@@ -1854,12 +1854,53 @@ if (document.getElementById('alert')) {
 ;
 
 if (document.getElementById('menuprofilbutton')) {
-  var menuprofil = document.getElementById('menuprofilbutton');
+  window.addEventListener('DOMContentLoaded', function () {
+    var menuprofilbutton = document.querySelector('#menuprofilbutton');
+    var menuprofil = document.querySelector('#menuprofil');
+    menuprofilbutton.addEventListener('click', function () {
+      menuprofil.classList.toggle('hidden');
+    });
+  });
+}
 
-  menuprofil.onclick = function () {
-    var className = document.getElementById('menuprofil').className;
-    document.getElementById('menuprofil').className = className === "hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" ? "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" : "hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none";
-  };
+if (document.getElementById('menuadministrateur-btn')) {
+  window.addEventListener('DOMContentLoaded', function () {
+    var menuprofilbutton = document.querySelector('#menuadministrateur-btn');
+    var menuprofil = document.querySelector('#dropdownadministrateur');
+    menuprofilbutton.addEventListener('click', function () {
+      menuprofil.classList.toggle('hidden');
+    });
+  });
+}
+
+if (document.getElementById('menuetudiant-btn')) {
+  window.addEventListener('DOMContentLoaded', function () {
+    var menuprofilbutton = document.querySelector('#menuetudiant-btn');
+    var menuprofil = document.querySelector('#dropdownetudiant');
+    menuprofilbutton.addEventListener('click', function () {
+      menuprofil.classList.toggle('hidden');
+    });
+  });
+}
+
+if (document.getElementById('menuenseignant-btn')) {
+  window.addEventListener('DOMContentLoaded', function () {
+    var menuprofilbutton = document.querySelector('#menuenseignant-btn');
+    var menuprofil = document.querySelector('#dropdownenseignant');
+    menuprofilbutton.addEventListener('click', function () {
+      menuprofil.classList.toggle('hidden');
+    });
+  });
+}
+
+if (document.getElementById('menurs-btn')) {
+  window.addEventListener('DOMContentLoaded', function () {
+    var menuprofilbutton = document.querySelector('#menurs-btn');
+    var menuprofil = document.querySelector('#dropdownrs');
+    menuprofilbutton.addEventListener('click', function () {
+      menuprofil.classList.toggle('hidden');
+    });
+  });
 }
 
 /***/ }),
