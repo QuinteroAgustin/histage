@@ -21,7 +21,7 @@
                 <button id="menuadministrateur-btn">Administrateur</button>
                 <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownadministrateur">
                     <div class="py-1">
-                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
+                        <a href="{{ route('pannelAdmin') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
                         <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">créer un user</a>
                     </div>
                 </div>

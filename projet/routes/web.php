@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UsersController;
 
 /*
@@ -26,3 +27,8 @@ Route::get('/profil/edit-password', [UsersController::class, 'editpassword'])->m
 Route::post('/profil/edit-password', [UsersController::class, 'editpasswordPost'])->middleware('isAuth')->name('editpasswordPost');
 
 Route::get('/profil/deconnexion', [UsersController::class, 'deconnexion'])->middleware('isAuth')->name('deconnexion');
+
+Route::get('/admin', [AdminController::class, 'pannel'])->middleware('isAuth')->name('pannelAdmin');
+
+Route::get('/admin/edit-{id}', [AdminController::class, 'editUser'])->middleware('isAuth')->name('editUser');
+Route::post('/admin/edit', [AdminController::class, 'editUserPost'])->middleware('isAuth')->name('editUserPost');
