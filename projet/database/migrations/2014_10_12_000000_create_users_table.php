@@ -21,8 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('emailUser')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('passwordUser');
-            $table->string('telephoneUser');
-            $table->string('mobileUser');
+            $table->string('telephoneUser')->nullable();
+            $table->string('mobileUser')->nullable();
             $table->string('titreUser');
 
             $table->unsignedBigInteger('role_id');
@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
             ->onDelete('restrict')
             ->onUpdate('restrict');
 
-            $table->rememberToken();
+            $table->rememberToken()->nullable();
             $table->timestamps();
         });
     }

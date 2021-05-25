@@ -11,7 +11,7 @@
             <th>actions</th>
         </tr>
         @foreach ($users as $user)
-            <tr>
+            <tr class="hover:bg-gray-200">
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->nomUser }}</td>
                 <td>{{ $user->prenomUser }}</td>

@@ -30,5 +30,9 @@ Route::get('/profil/deconnexion', [UsersController::class, 'deconnexion'])->midd
 
 Route::get('/admin', [AdminController::class, 'pannel'])->middleware('isAuth')->name('pannelAdmin');
 
+Route::get('/admin/createuser', [AdminController::class, 'createUser'])->middleware('isAuth')->name('createUser');
+Route::post('/admin/createuser', [AdminController::class, 'createUserPost'])->middleware('isAuth')->name('createUserPost');
+
 Route::get('/admin/edit-{id}', [AdminController::class, 'editUser'])->middleware('isAuth')->name('editUser');
 Route::post('/admin/edit', [AdminController::class, 'editUserPost'])->middleware('isAuth')->name('editUserPost');
+Route::post('/admin/editPassword', [AdminController::class, 'editUserPasswordPost'])->middleware('isAuth')->name('editUserPasswordPost');

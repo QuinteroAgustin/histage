@@ -1,42 +1,62 @@
 @extends('layouts.app')
 @section('title', 'Edit utilisateur')
-@section('content')
-    <div class="">
+@section('content') 
+    <div class="mx-auto self-center">
         <form action="{{ route('editUserPost') }}" method="POST">
             @csrf
-            <p>Edition du profil</p>
-            <label for="titre">titre</label>
-            <input type="text" name="titre" id="titre" value="{{ $user->titreUser }}">
-
-            <label for="nom">nom</label>
-            <input type="text" name="nom" id="nom" value="{{ $user->nomUser }}">
-
-            <label for="prenom">prenom</label>
-            <input type="text" name="prenom" id="prenom" value="{{ $user->prenomUser }}">
-
-            <label for="email">email</label>
-            <input type="text" name="email" id="email" value="{{ $user->emailUser }}">
-
-            <label for="telephone">telephone</label>
-            <input type="text" name="telephone" id="telephone" value="{{ $user->telephoneUser }}">
-
-            <label for="mobile">mobile</label>
-            <input type="text" name="mobile" id="mobile" value="{{ $user->mobileUser }}">
-
-            <button class="bg-blue-300 px-2 rounded hover:bg-green-300" type="submit" name="submit">Modifier</button>
+        <div class="bg-white shadow-lg max-w-lg md:flex">
+            <div class="p-4 flex-1 md:flex md:flex-col justify-center">
+                <h1 class="text-2xl font-bold text-gray-800 mb-2">Edition du profil de {{ $user->emailUser }}</h1>
+                <input class="hidden" type="text" value="{{ $user->id }}" name="id">
+                <div class="mb-4">
+                    <label class="block text-gray-600 mb-2" for="titre">Titre : </label>
+                    <input class="border shadow py-2 px-3 text-gray-700 w-full focus:shadow-outline" type="text" value="{{ $user->titreUser }}" name="titre" id="titre">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-600 mb-2" for="nom">Nom : </label>
+                    <input class="border shadow py-2 px-3 text-gray-700 w-full focus:shadow-outline" type="text" value="{{ $user->nomUser }}" name="nom" id="nom">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-600 mb-2" for="prenom">Prénom : </label>
+                    <input class="border shadow py-2 px-3 text-gray-700 w-full focus:shadow-outline" type="text" value="{{ $user->prenomUser }}" name="prenom" id="prenom">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-600 mb-2" for="email">Email : </label>
+                    <input class="border shadow py-2 px-3 text-gray-700 w-full focus:shadow-outline" type="text" value="{{ $user->emailUser }}" name="email" id="email">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-600 mb-2" for="telephone">Téléphone : </label>
+                    <input class="border shadow py-2 px-3 text-gray-700 w-full focus:shadow-outline" type="text" value="{{ $user->telephoneUser }}" name="telephone" id="telephone">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-600 mb-2" for="mobile">Mobile : </label>
+                    <input class="border shadow py-2 px-3 text-gray-700 w-full focus:shadow-outline" type="text" value="{{ $user->mobileUser }}" name="mobile" id="mobile">
+                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-green-500">Modifier l'utilisateur</button>
+            </div>
+        </div>
         </form>
     </div>
-    <div>
-        <form action="{{ route('home') }}" method="POST">
+
+    <div class="mx-auto self-center">
+        <form action="{{ route('editUserPasswordPost') }}" method="POST">
             @csrf
-            <p>Edition du mot de passe</p>
-            <label for="password">Nouveau mot de passe</label>
-            <input type="password" name="password" id="password">
-            <label for="password2">Nouveau mot de passe</label>
-            <input type="password" name="password2" id="password2">
-            <button class="bg-blue-300 px-2 rounded hover:bg-green-300" type="submit" name="submit">Modifier mot de passe</button>
+        <div class="bg-white shadow-lg max-w-lg md:flex">
+            <div class="p-4 flex-1 md:flex md:flex-col justify-center">
+                <h1 class="text-2xl font-bold text-gray-800 mb-2">Edition du mot de passe</h1>
+                <input class="hidden" type="text" value="{{ $user->id }}" name="id">
+                <div class="mb-4">
+                    <label class="block text-gray-600 mb-2" for="password">Nouveau mot de passe : </label>
+                    <input class="border shadow py-2 px-3 text-gray-700 w-full focus:shadow-outline" type="password" name="password" id="password">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-600 mb-2" for="repassword">Valider le mot de passe : </label>
+                    <input class="border shadow py-2 px-3 text-gray-700 w-full focus:shadow-outline" type="password" name="repassword" id="repassword">
+                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-green-500">Modifier son ancien mot de passe</button>
+            </div>
+        </div>
         </form>
     </div>
-    
 
 @endsection
