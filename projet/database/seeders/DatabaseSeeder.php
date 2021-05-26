@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Role::factory(10)->create();
+        Role::factory(4)->create();
         Section::factory(10)->create();
         Eleve::factory(10)->create();
         Enseignant::factory(10)->create();

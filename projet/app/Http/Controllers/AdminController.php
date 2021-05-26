@@ -18,7 +18,8 @@ class AdminController extends Controller
 
     public function editUser(Request $request) {
         $user= User::where('id', '=', $request->id)->firstOrFail();
-        return view('admin.editUser', ['user' => $user]);
+        $roles= Role::all();
+        return view('admin.editUser', ['user' => $user, 'roles'=> $roles]);
     }
 
     public function editUserPost(Request $request){
@@ -35,6 +36,7 @@ class AdminController extends Controller
         $user->telephoneUser = $request->telephone;
         $user->mobileUser = $request->mobile;
         $user->titreUser = $request->titre;
+        $user->role_id = $request->role;
         $user->updated_at = now();
         $user->save();
         $request->session()->put('messages', ['Succes'=>'Utilisateur '.$request->email.' édité avec succès.']);

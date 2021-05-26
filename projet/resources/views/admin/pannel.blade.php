@@ -8,6 +8,7 @@
             <th>nom</th>
             <th>prenom</th>
             <th>email</th>
+            <th>role</th>
             <th>actions</th>
         </tr>
         @foreach ($users as $user)
@@ -16,6 +17,7 @@
                 <td>{{ $user->nomUser }}</td>
                 <td>{{ $user->prenomUser }}</td>
                 <td>{{ $user->emailUser }}</td>
+                <td>{{ $user->role->libRole }}</td>
                 <td><a class="bg-blue-300 pl-3 pr-3 rounded hover:bg-blue-600" href="{{ route('editUser', ['id'=>$user->id]) }}">Edit</a></td>
             </tr>
             

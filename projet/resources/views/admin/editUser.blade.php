@@ -32,6 +32,14 @@
                     <label class="block text-gray-600 mb-2" for="mobile">Mobile : </label>
                     <input class="border shadow py-2 px-3 text-gray-700 w-full focus:shadow-outline" type="text" value="{{ $user->mobileUser }}" name="mobile" id="mobile">
                 </div>
+                <div class="mb-4">
+                    <label class="block text-gray-600 mb-2" for="role">Role : </label>
+                    <select name="role" id="role">
+                        @foreach ($roles as $role)
+                        <option value="{{ $role->id }}" @if($user->role->id == $role->id) selected @endif>{{ $role->libRole}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-green-500">Modifier l'utilisateur</button>
             </div>
         </div>
