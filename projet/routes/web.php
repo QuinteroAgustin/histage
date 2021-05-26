@@ -33,15 +33,22 @@ Route::get('/admin', [AdminController::class, 'pannel'])->middleware('isAuth')->
 Route::get('/admin/createuser', [AdminController::class, 'createUser'])->middleware('isAuth')->name('createUser');
 Route::post('/admin/createuser', [AdminController::class, 'createUserPost'])->middleware('isAuth')->name('createUserPost');
 
-Route::get('/admin/edit-{id}', [AdminController::class, 'editUser'])->middleware('isAuth')->name('editUser');
-Route::post('/admin/edit', [AdminController::class, 'editUserPost'])->middleware('isAuth')->name('editUserPost');
-Route::post('/admin/editPassword', [AdminController::class, 'editUserPasswordPost'])->middleware('isAuth')->name('editUserPasswordPost');
+Route::get('/admin/editUser-{id}', [AdminController::class, 'editUser'])->middleware('isAuth')->name('editUser');
+Route::post('/admin/editUser', [AdminController::class, 'editUserPost'])->middleware('isAuth')->name('editUserPost');
+Route::post('/admin/editUserPassword', [AdminController::class, 'editUserPasswordPost'])->middleware('isAuth')->name('editUserPasswordPost');
 
 Route::get('/admin/createRole', [AdminController::class, 'createRole'])->middleware('isAuth')->name('createRole');
 Route::post('/admin/createRole', [AdminController::class, 'createRolePost'])->middleware('isAuth')->name('createRolePost');
-
 Route::get('/admin/editRole-{id}', [AdminController::class, 'editRole'])->middleware('isAuth')->name('editRole');
 Route::post('/admin/editRole', [AdminController::class, 'editRolePost'])->middleware('isAuth')->name('editRolePost');
 
+Route::get('/admin/createAnneeScolaire', [AdminController::class, 'createAnneeScolaire'])->middleware('isAuth')->name('createAnneeScolaire');
+Route::post('/admin/createAnneeScolaire', [AdminController::class, 'createAnneeScolairePost'])->middleware('isAuth')->name('createAnneeScolairePost');
+Route::get('/admin/editAnneeScolaire-{id}', [AdminController::class, 'editAnneeScolaire'])->middleware('isAuth')->name('editAnneeScolaire');
+Route::post('/admin/editAnneeScolaire', [AdminController::class, 'editAnneeScolairePost'])->middleware('isAuth')->name('editAnneeScolairePost');
 
+Route::get('/admin/createSection', [AdminController::class, 'createSection'])->middleware('isAuth')->name('createSection');
+Route::post('/admin/createSection', [AdminController::class, 'createSectionPost'])->middleware('isAuth')->name('createSectionPost');
+Route::get('/admin/editSection-{id}', [AdminController::class, 'editSection'])->middleware('isAuth')->name('editSection');
+Route::post('/admin/editSection', [AdminController::class, 'editSectionPost'])->middleware('isAuth')->name('editSectionPost');
 

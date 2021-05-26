@@ -22,7 +22,10 @@
                 <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownadministrateur">
                     <div class="py-1">
                         <a href="{{ route('pannelAdmin') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
-                        <a href="{{ route('createUser') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">créer un user</a>
+                        <a href="{{ route('createUser') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">créer un utilisateur</a>
+                        <a href="{{ route('createRole') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">créer un role</a>
+                        <a href="{{ route('createAnneeScolaire') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">créer une année</a>
+                        <a href="{{ route('createAnneeScolaire') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">créer une section</a>
                     </div>
                 </div>
             </div>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anneescolaire;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Indicateur;
+use App\Models\Section;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,7 +15,9 @@ class AdminController extends Controller
 
         $users=User::all();
         $roles=Role::all();
-        return view('admin.pannel', ['users'=>$users,'roles'=>$roles]);
+        $annees=Anneescolaire::all();
+        $sections=Section::all();
+        return view('admin.pannel', ['users'=>$users,'roles'=>$roles,'annees'=>$annees,'sections'=>$sections]);
     }
 
     public function editUser(Request $request) {
@@ -101,10 +105,14 @@ class AdminController extends Controller
 
     public function createRolePost(Request $request){
         if(strlen($request->libRole)>2){
-            $role=new Role;
-            $role->libRole = $request->libRole;
-            $role->save();
-            $request->session()->put('messages', ['Succes'=>'Le role '.$request->libRole.' a été créer avec succès.']);
+            if(count(Role::where('libRole', '=', $request->libRole)->get()) < 1){
+                $role=new Role;
+                $role->libRole = $request->libRole;
+                $role->save();
+                $request->session()->put('messages', ['Succes'=>'Le role '.$request->libRole.' a été créer avec succès.']);
+            }else{
+                $request->session()->put('messages', ['Erreur'=>'Le role '.$request->libRole.' existe déjà.']);
+            }            
         }else{
             $request->session()->put('messages', ['Erreur'=>'Nom du role trop court.']);
         }
@@ -131,5 +139,89 @@ class AdminController extends Controller
             $request->session()->put('messages', ['Erreur'=>'Nom du role trop court.']);
         }
         return redirect()->route('editRole',['id'=>$role->id]);
+    }
+
+    public function createAnneeScolaire(){
+        return view('admin.createAnneeScolaire');
+    }
+
+    public function createAnneeScolairePost(Request $request){
+        if(strlen($request->libAnneeScolaire)>2){
+            if(count(Anneescolaire::where('libAnneeScolaire', '=', $request->libAnneeScolaire)->get()) < 1){
+                $annee=new Anneescolaire;
+                $annee->libAnneeScolaire = $request->libAnneeScolaire;
+                $annee->save();
+                $request->session()->put('messages', ['Succes'=>'L\'année '.$request->libAnneeScolaire.' a été créer avec succès.']);
+            }else{
+                $request->session()->put('messages', ['Erreur'=>'L\'année '.$request->libAnneeScolaire.' existe déjà.']);
+            }
+        }else{
+            $request->session()->put('messages', ['Erreur'=>'Nom de l\'année est trop court.']);
+        }
+        return redirect()->route('pannelAdmin');
+    }
+
+    public function editAnneeScolaire(Request $request){
+        $annee = Anneescolaire::find($request->id);
+        return view('admin.editAnneeScolaire', ['annee' => $annee]);
+    }
+
+    public function editAnneeScolairePost(Request $request){
+        $annee= Anneescolaire::find($request->id);
+        if(strlen($request->libAnneeScolaire)>8){
+            if(count(Anneescolaire::where('libAnneeScolaire', '=', $request->libAnneeScolaire)->get()) < 1){
+                $annee->libAnneeScolaire = $request->libAnneeScolaire;
+                $annee->save();
+                $request->session()->put('messages', ['Succes'=>'L\'année '.$request->libAnneeScolaire.' a été modifier avec succès.']);
+                return redirect()->route('pannelAdmin');
+            }else{
+                $request->session()->put('messages', ['Erreur'=>'L\'année '.$request->libAnneeScolaire.' existe déjà.']);
+            }
+        }else{
+            $request->session()->put('messages', ['Erreur'=>'La date est trop courte.']);
+        }
+        return redirect()->route('editAnneeScolaire',['id'=>$annee->id]);
+    }
+
+    public function createSection(){
+        return view('admin.createSection');
+    }
+
+    public function createSectionPost(Request $request){
+        if(strlen($request->libSection)>1){
+            if(count(Section::where('libSection', '=', $request->libSection)->get()) < 1){
+                $section=new Section;
+                $section->libSection = $request->libSection;
+                $section->save();
+                $request->session()->put('messages', ['Succes'=>'La section '.$request->libSection.' a été créer avec succès.']);
+            }else{
+                $request->session()->put('messages', ['Erreur'=>'La section '.$request->libSection.' existe déjà.']);
+            }
+        }else{
+            $request->session()->put('messages', ['Erreur'=>'Nom de la section est trop courte.']);
+        }
+        return redirect()->route('pannelAdmin');
+    }
+
+    public function editSection(Request $request){
+        $section = Section::find($request->id);
+        return view('admin.editSection', ['section' => $section]);
+    }
+
+    public function editSectionPost(Request $request){
+        $section= Section::find($request->id);
+        if(strlen($request->libSection)>1){
+            if(count(Section::where('libSection', '=', $request->libSection)->get()) < 1){
+                $section->libSection = $request->libSection;
+                $section->save();
+                $request->session()->put('messages', ['Succes'=>'La section '.$request->libSection.' a été modifier avec succès.']);
+                return redirect()->route('pannelAdmin');
+            }else{
+                $request->session()->put('messages', ['Erreur'=>'La section '.$request->libSection.' existe déjà.']);
+            }
+        }else{
+            $request->session()->put('messages', ['Erreur'=>'La section est trop courte.']);
+        }
+        return redirect()->route('editSection',['id'=>$section->id]);
     }
 }

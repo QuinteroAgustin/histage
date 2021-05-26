@@ -13,6 +13,7 @@ class CreateTypeindicateursTable extends Migration
      */
     public function up()
     {
+        
         Schema::create('typeindicateurs', function (Blueprint $table) {
             $table->id();
             $table->string('libTypeIndicateur');
@@ -27,6 +28,7 @@ class CreateTypeindicateursTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('typeindicateurs');
     }
 }
