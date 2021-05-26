@@ -12,7 +12,8 @@ class AdminController extends Controller
     public function pannel() {
 
         $users=User::all();
-        return view('admin.pannel', ['users'=>$users]);
+        $roles=Role::all();
+        return view('admin.pannel', ['users'=>$users,'roles'=>$roles]);
     }
 
     public function editUser(Request $request) {
@@ -84,11 +85,49 @@ class AdminController extends Controller
                 $user->mobileUser = $request->mobile;
             }
             $user->save();
-            $request->session()->put('messages', ['Succes'=>'L\'utilisateur '.$request->email.' à été créer avec succès.']);
+            $request->session()->put('messages', ['Succes'=>'L\'utilisateur '.$request->email.' a été créer avec succès.']);
             return redirect()->route('pannelAdmin');
         }else{
             $request->session()->put('messages', ['Erreur'=>'Tous les champs obligatoires n\'ont pas été remplis.']);
         }
         return redirect()->route('createUser');
+    }
+
+    public function createRole(){
+        return view('admin.createRole');
+    }
+
+    public function createRolePost(Request $request){
+        if(strlen($request->libRole)>2){
+            $role=new Role;
+            $role->libRole = $request->libRole;
+            $role->save();
+            $request->session()->put('messages', ['Succes'=>'Le role '.$request->libRole.' a été créer avec succès.']);
+        }else{
+            $request->session()->put('messages', ['Erreur'=>'Nom du role trop court.']);
+        }
+        return redirect()->route('pannelAdmin');
+    }
+
+    public function editRole(Request $request){
+        $role= Role::find($request->id);
+        return view('admin.editRole',['role'=>$role]);
+    }
+
+    public function editRolePost(Request $request){
+        $role= Role::find($request->id);
+        if(strlen($request->libRole)>2){
+            if(count(Role::where('libRole', '=', $request->libRole)->get()) < 1){
+                $role->libRole = $request->libRole;
+                $role->save();
+                $request->session()->put('messages', ['Succes'=>'Le role '.$request->libRole.' a été modifier avec succès.']);
+                return redirect()->route('pannelAdmin');
+            }else{
+                $request->session()->put('messages', ['Erreur'=>'Le role '.$request->libRole.' existe déjà.']);
+            }
+        }else{
+            $request->session()->put('messages', ['Erreur'=>'Nom du role trop court.']);
+        }
+        return redirect()->route('editRole',['id'=>$role->id]);
     }
 }

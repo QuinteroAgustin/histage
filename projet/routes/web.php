@@ -36,3 +36,12 @@ Route::post('/admin/createuser', [AdminController::class, 'createUserPost'])->mi
 Route::get('/admin/edit-{id}', [AdminController::class, 'editUser'])->middleware('isAuth')->name('editUser');
 Route::post('/admin/edit', [AdminController::class, 'editUserPost'])->middleware('isAuth')->name('editUserPost');
 Route::post('/admin/editPassword', [AdminController::class, 'editUserPasswordPost'])->middleware('isAuth')->name('editUserPasswordPost');
+
+Route::get('/admin/createRole', [AdminController::class, 'createRole'])->middleware('isAuth')->name('createRole');
+Route::post('/admin/createRole', [AdminController::class, 'createRolePost'])->middleware('isAuth')->name('createRolePost');
+
+Route::get('/admin/editRole-{id}', [AdminController::class, 'editRole'])->middleware('isAuth')->name('editRole');
+Route::post('/admin/editRole', [AdminController::class, 'editRolePost'])->middleware('isAuth')->name('editRolePost');
+
+
+
