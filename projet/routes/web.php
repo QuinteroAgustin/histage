@@ -30,8 +30,8 @@ Route::get('/profil/deconnexion', [UsersController::class, 'deconnexion'])->midd
 
 Route::get('/admin', [AdminController::class, 'pannel'])->middleware('isAuth')->name('pannelAdmin');
 
-Route::get('/admin/createuser', [AdminController::class, 'createUser'])->middleware('isAuth')->name('createUser');
-Route::post('/admin/createuser', [AdminController::class, 'createUserPost'])->middleware('isAuth')->name('createUserPost');
+Route::get('/admin/createUser', [AdminController::class, 'createUser'])->middleware('isAuth')->name('createUser');
+Route::post('/admin/createUser', [AdminController::class, 'createUserPost'])->middleware('isAuth')->name('createUserPost');
 
 Route::get('/admin/editUser-{id}', [AdminController::class, 'editUser'])->middleware('isAuth')->name('editUser');
 Route::post('/admin/editUser', [AdminController::class, 'editUserPost'])->middleware('isAuth')->name('editUserPost');
@@ -52,3 +52,8 @@ Route::post('/admin/createSection', [AdminController::class, 'createSectionPost'
 Route::get('/admin/editSection-{id}', [AdminController::class, 'editSection'])->middleware('isAuth')->name('editSection');
 Route::post('/admin/editSection', [AdminController::class, 'editSectionPost'])->middleware('isAuth')->name('editSectionPost');
 
+Route::get('/admin/createSection', [AdminController::class, 'createSection'])->middleware('isAuth')->name('createSection');
+Route::post('/admin/createSection', [AdminController::class, 'createSectionPost'])->middleware('isAuth')->name('createSectionPost');
+
+Route::get('/admin/createUser/eleve-{id}', [AdminController::class, 'createUserEleve'])->middleware('isAuth')->name('createUserEleve');
+Route::post('/admin/createUser/eleve', [AdminController::class, 'createUserElevePost'])->middleware('isAuth')->name('createUserPostEleve');

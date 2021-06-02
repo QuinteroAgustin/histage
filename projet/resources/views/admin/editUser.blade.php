@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Edit utilisateur')
-@section('content') 
+@section('content')
     <div class="mx-auto self-center">
         <form action="{{ route('editUserPost') }}" method="POST">
             @csrf
@@ -10,7 +10,11 @@
                 <input class="hidden" type="text" value="{{ $user->id }}" name="id">
                 <div class="mb-4">
                     <label class="block text-gray-600 mb-2" for="titre">Titre : </label>
-                    <input class="border shadow py-2 px-3 text-gray-700 w-full focus:shadow-outline" type="text" value="{{ $user->titreUser }}" name="titre" id="titre">
+                    <select name="titre" id="titre">
+                        <option value="Mr." @if($user->titreUser == 'Mr.') selected @endif>Mr.</option>
+                        <option value="Mme." @if($user->titreUser == 'Mme.') selected @endif>Mme.</option>
+                        <option value="Mlle." @if($user->titreUser == 'Mlle.') selected @endif>Mlle.</option>
+                    </select>
                 </div>
                 <div class="mb-4">
                     <label class="block text-gray-600 mb-2" for="nom">Nom : </label>

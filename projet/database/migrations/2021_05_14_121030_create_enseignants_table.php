@@ -22,7 +22,7 @@ class CreateEnseignantsTable extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
-            $table->string('libMetierEnseignant');
+            $table->string('libMetierEnseignant')->nullable();
             $table->timestamps();
         });
     }

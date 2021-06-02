@@ -21,10 +21,10 @@ class CreateContactsTable extends Migration
             ->on('users')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            
-            $table->string('statusContact', 1);
-            $table->string('fonctionContact');
-            
+
+            $table->string('statusContact', 1)->nullable();
+            $table->string('fonctionContact')->nullable();
+
             $table->unsignedBigInteger('entreprise_id');
             $table->foreign('entreprise_id')
             ->references('id')

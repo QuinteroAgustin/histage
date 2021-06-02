@@ -22,12 +22,12 @@ class CreateElevesTable extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
-            $table->date('dateNaissanceEleve');
-            $table->date('dateRentreeEleve');
-            $table->integer('numAdrEleve');
-            $table->string('villeAdrEleve');
-            $table->string('libAdrEleve');
-            $table->integer('codePostalAdrEleve');
+            $table->date('dateNaissanceEleve')->nullable();
+            $table->date('dateRentreeEleve')->nullable();
+            $table->integer('numAdrEleve')->nullable();
+            $table->string('villeAdrEleve')->nullable();
+            $table->string('libAdrEleve')->nullable();
+            $table->integer('codePostalAdrEleve')->nullable();
             $table->unsignedBigInteger('section_id');
             $table->foreign('section_id')
             ->references('id')

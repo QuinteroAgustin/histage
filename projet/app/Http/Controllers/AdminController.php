@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anneescolaire;
+use App\Models\Contact;
+use App\Models\Eleve;
+use App\Models\Enseignant;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Indicateur;
@@ -91,12 +94,52 @@ class AdminController extends Controller
                 $user->mobileUser = $request->mobile;
             }
             $user->save();
+            $id_user= User::where('emailUser', $request->email)->first()->id;
+            if($request->role == 1){//admin
+                $request->session()->put('messages', ['Succes'=>'']);
+            }elseif($request->role == 2){//enseignant
+                $props = New Enseignant;
+                $props->id = $id_user;
+                $props->save();
+            }elseif($request->role == 3){//Eleve
+                $request->session()->put('messages', ['Succes'=>'L\'utilisateur '.$request->email.' a été créer avec succès.']);
+                return redirect()->route('createUserEleve', ['id' => $id_user]);
+            }elseif($request->role == 4){//contact
+                $props = New Contact;
+                $props->id = $id_user;
+                $props->save();
+            }else{
+                User::find($id_user)->delete();
+                $request->session()->put('messages', ['Erreur'=>'Le rôle n\'existe pas.']);
+                return redirect()->route('createUser');
+            }
             $request->session()->put('messages', ['Succes'=>'L\'utilisateur '.$request->email.' a été créer avec succès.']);
             return redirect()->route('pannelAdmin');
         }else{
             $request->session()->put('messages', ['Erreur'=>'Tous les champs obligatoires n\'ont pas été remplis.']);
         }
         return redirect()->route('createUser');
+    }
+
+    public function createUserEleve(Request $request){
+        $user=User::find($request->id);
+        $sections = Section::all();
+        return view('admin.createUserEleve', ['user' => $user, 'sections' => $sections]);
+    }
+
+    public function createUserElevePost(Request $request){
+        $eleve = new Eleve;
+        $eleve->id = $request->id;
+        $eleve->dateNaissanceEleve = $request->datenaissance;
+        $eleve->dateRentreeEleve = $request->daterentree;
+        $eleve->numAdrEleve = $request->numAdr;
+        $eleve->villeAdrEleve = $request->villeAdr;
+        $eleve->libAdrEleve = $request->libAdr;
+        $eleve->codePostalAdrEleve = $request->codePostalAdr;
+        $eleve->section_id = $request->section;
+        $eleve->save();
+        $request->session()->put('messages', ['Succes'=>'L\'élève a été créer avec succès.']);
+        return redirect()->route('pannelAdmin');
     }
 
     public function createRole(){
@@ -112,7 +155,7 @@ class AdminController extends Controller
                 $request->session()->put('messages', ['Succes'=>'Le role '.$request->libRole.' a été créer avec succès.']);
             }else{
                 $request->session()->put('messages', ['Erreur'=>'Le role '.$request->libRole.' existe déjà.']);
-            }            
+            }
         }else{
             $request->session()->put('messages', ['Erreur'=>'Nom du role trop court.']);
         }

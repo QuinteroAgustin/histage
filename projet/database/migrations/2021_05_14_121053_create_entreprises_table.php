@@ -15,16 +15,16 @@ class CreateEntreprisesTable extends Migration
     {
         Schema::create('entreprises', function (Blueprint $table) {
             $table->id();
-            $table->string('nomEntreprise');
-            $table->string('serviceEntreprise');
-            $table->string('missionEntreprise');
-            $table->integer('numAdrEntreprise');
-            $table->string('libAdrEntreprise');
-            $table->integer('codePostalEntreprise');
-            $table->string('villeEntreprise');
-            $table->string('telephoneEntreprise');
-            $table->string('mailEntreprise');
-            $table->string('siretEntreprise');
+            $table->string('nomEntreprise')->nullable();
+            $table->string('serviceEntreprise')->nullable();
+            $table->string('missionEntreprise')->nullable();
+            $table->integer('numAdrEntreprise')->nullable();
+            $table->string('libAdrEntreprise')->nullable();
+            $table->integer('codePostalEntreprise')->nullable();
+            $table->string('villeEntreprise')->nullable();
+            $table->string('telephoneEntreprise')->nullable();
+            $table->string('mailEntreprise')->nullable();
+            $table->string('siretEntreprise')->nullable();
             $table->timestamps();
         });
     }
