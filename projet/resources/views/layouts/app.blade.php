@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Histage - @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    
+
 </head>
 <body class="h-full bg-gray-200">
     <!-- Navbar -->
@@ -33,7 +33,7 @@
                 <button id="menuenseignant-btn">Enseignant</button>
                 <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownenseignant">
                     <div class="py-1">
-                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
+                        <a href="{{ route('pannelEnseignant') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
                         <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">notation</a>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                 <button id="menuetudiant-btn">Etudiant</button>
                 <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownetudiant">
                     <div class="py-1">
-                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">mes stages</a>
+                        <a href="{{ route('pannelEleve') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">mes stages</a>
                         <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">mes contacts</a>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                 <button id="menurs-btn">Rs</button>
                 <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownrs">
                     <div class="py-1">
-                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
+                        <a href="{{ route('pannelRs') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
                         <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">Entreprises</a>
                         <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">Stages</a>
                         <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">Années scolaires</a>
@@ -91,7 +91,7 @@
         @endif
                 <strong class="font-bold">{{ $key }}</strong>
                 <span class="block sm:inline">{{ $message }}</span>
-            
+
             {{ session()->forget('messages') }}
             <button class="" id="alert">X</button>
         </div>
@@ -99,21 +99,23 @@
     @endif
 
     <!-- sous la navbar -->
-    <div class="flex justify-between">
+    <!-- Division du body en 3
+    <div class="flex justify-between">-->
         <!-- Gauche -->
-        <div class="">
-            
-        </div>
-        <!-- Milieu -->
-        <div class="">
-            <!-- Laisse la place pour le content de la page qui va etre appelé -->
-            @yield('content')
-        </div>
-        <!-- Droite -->
-        <div class="">
+        <!--<div class="">-->
 
-        </div>
-    </div>
+        <!--</div>-->
+        <!-- Milieu -->
+        <!--<div class="">-->
+            <!-- Laisse la place pour le content de la page qui va etre appelé -->
+
+        <!--</div>-->
+        <!-- Droite -->
+        <!--<div class="">-->
+
+        <!--</div>-->
+    <!--</div>-->
+    @yield('content')
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

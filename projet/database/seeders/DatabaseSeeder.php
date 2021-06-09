@@ -25,9 +25,9 @@ class DatabaseSeeder extends Seeder
     {
         Role::factory(4)->create();
         Section::factory(10)->create();
-        Eleve::factory(10)->create();
         Enseignant::factory(10)->create();
         Contact::factory(10)->create();
+        Eleve::factory(10)->create();
         Anneescolaire::factory(3)->create();
         Typeindicateur::factory(10)->create();
         Indicateur::factory(100)->create();

@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\home\HomeController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\eleve\EleveController;
+use App\Http\Controllers\enseignant\rs\RsController;
+use App\Http\Controllers\enseignant\EnseignantController;
 use App\Http\Controllers\admin\roles\AdminEditRoleController;
 use App\Http\Controllers\admin\users\AdminEditUserController;
 use App\Http\Controllers\users\profile\ProfileUserController;
@@ -71,3 +74,16 @@ Route::post('/admin/editSection', [AdminEditSectionController::class, 'editSecti
 Route::get('/admin/createUser/eleve-{id}', [AdminCreateUserController::class, 'createUserEleve'])->middleware('isAuth')->name('createUserEleve');
 Route::post('/admin/createUser/eleve', [AdminCreateUserController::class, 'createUserElevePost'])->middleware('isAuth')->name('createUserPostEleve');
 //fin route pour l'admin
+
+
+//Routes pour les Rs
+Route::get('/enseignant/rs', [RsController::class, 'pannel'])->middleware('isAuth')->name('pannelRs');
+//fin des routes pour le rs
+
+//Routes pour les Enseignants
+Route::get('/enseignant', [EnseignantController::class, 'pannel'])->middleware('isAuth')->name('pannelEnseignant');
+//fin des routes pour le enseignants
+
+//Routes pour les eleves
+Route::get('/eleve', [EleveController::class, 'pannel'])->middleware('isAuth')->name('pannelEleve');
+//fin des routes pour les eleves

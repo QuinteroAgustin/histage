@@ -37,7 +37,7 @@
                     <td>{{ $user->role->libRole }}</td>
                     <td><a class="bg-blue-300 pl-3 pr-3 rounded hover:bg-blue-600" href="{{ route('editUser', ['id'=>$user->id]) }}">Edit</a></td>
                 </tr>
-                
+
             @endforeach
         </table>
     </div>
@@ -54,7 +54,7 @@
                     <td>{{ $role->libRole }}</td>
                     <td><a class="bg-blue-300 pl-3 pr-3 rounded hover:bg-blue-600" href="{{ route('editRole', ['id'=>$role->id]) }}">Edit</a></td>
                 </tr>
-                
+
             @endforeach
         </table>
     </div>
@@ -71,7 +71,7 @@
                     <td>{{ $annee->libAnneeScolaire }}</td>
                     <td><a class="bg-blue-300 pl-3 pr-3 rounded hover:bg-blue-600" href="{{ route('editAnneeScolaire', ['id'=>$annee->id]) }}">Edit</a></td>
                 </tr>
-                
+
             @endforeach
         </table>
     </div>
@@ -88,11 +88,11 @@
                     <td>{{ $section->libSection }}</td>
                     <td><a class="bg-blue-300 pl-3 pr-3 rounded hover:bg-blue-600" href="{{ route('editSection', ['id'=>$section->id]) }}">Edit</a></td>
                 </tr>
-                
+
             @endforeach
         </table>
     </div>
-</div>    
+</div>
 <script>
     window.addEventListener('DOMContentLoaded', ()=> {
         const buttonUser = document.querySelector('#buttonUser')

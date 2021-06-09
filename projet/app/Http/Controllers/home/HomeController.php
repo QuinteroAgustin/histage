@@ -14,6 +14,11 @@ class HomeController extends Controller
      */
     public function accueil()
     {
+        /**
+         *$user= Enseignant::find(11);
+         *$user->sections()->attach(3, ['isRs' => 0]);
+         *$user->save();
+         */
         return view('home.accueil');
     }
 }
