@@ -6,7 +6,7 @@
     <div class="bg-green-200 px-2 flex flex-col" id="menuleft">
         <a class="bg-pink-200 mx-2 px-2 my-2 rounded" href="#">Etudiants</a>
         <a class="bg-pink-200 mx-2 px-2 mb-2 rounded" href="#">Stages</a>
-        <a class="bg-pink-200 mx-2 px-2 mb-2 rounded" href="#">Enseignants</a>
+        <a class="bg-pink-200 mx-2 px-2 mb-2 rounded" href="{{ route('createEntreprise') }}">Enseignants</a>
         <a class="bg-pink-200 mx-2 px-2 mb-2 rounded" href="#">Entreprises</a>
     </div>
     <div class="bg-blue-200"  id="center">

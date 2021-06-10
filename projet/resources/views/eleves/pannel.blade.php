@@ -17,6 +17,7 @@
                 <th>Durée hebdomadaire</th>
                 <th>Année du stage</th>
                 <th>Entreprise</th>
+                <th>Actions</th>
             </tr>
             @foreach ($stages as $stage)
             <tr class="text-center">
@@ -27,6 +28,7 @@
                 <td>{{ $stage->dureeHebdoStage }}</td>
                 <td>{{ $stage->anneescolaire->libAnneeScolaire }}</td>
                 <td>{{ $stage->entreprise->nomEntreprise }}</td>
+                <td><a class="bg-yellow-200 hover:bg-yellow-500 rounded mx-1 px-1" href="#">Convention</a></td>
             </tr>
             @endforeach
         </table>
