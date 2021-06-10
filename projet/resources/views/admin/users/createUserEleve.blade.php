@@ -10,7 +10,7 @@
     <div>
     <!-- Laisse la place pour le content de la page qui va etre appelé -->
     <div class="mx-auto self-center">
-        <form action="{{ route('createUserPostEleve') }}" method="POST">
+        <form action="{{ route('createUserElevePost') }}" method="POST">
             @csrf
         <div class="bg-white shadow-lg max-w-lg md:flex">
             <div class="p-4 flex-1 md:flex md:flex-col justify-center">
@@ -46,7 +46,7 @@
                     <input class="border shadow py-2 px-3 text-gray-700 w-full focus:shadow-outline" type="text" name="codePostalAdr" id="codePostalAdr">
                 </div>
                 <div class="mb-4" id="section_selector">
-                    <label class="block text-gray-600 mb-2" for="role">Section : </label>
+                    <label class="block text-gray-600 mb-2" for="section">Section : </label>
                     <select name="section" id="section">
                         @foreach ($sections as $section)
                         <option value="{{ $section->id }}">{{ $section->libSection}}</option>

@@ -25,8 +25,8 @@
                 <td>{{ $stage->dateDebutStage }}</td>
                 <td>{{ $stage->dateFinStage }}</td>
                 <td>{{ $stage->dureeHebdoStage }}</td>
-                <td>{{ $stage->anneescolaire_id }}</td>
-                <td>{{ $stage->entreprise_id }}</td>
+                <td>{{ $stage->anneescolaire->libAnneeScolaire }}</td>
+                <td>{{ $stage->entreprise->nomEntreprise }}</td>
             </tr>
             @endforeach
         </table>

@@ -9,6 +9,7 @@ class EleveController extends Controller
 {
     public function pannel(){
         $stages = User::find(session()->get('user')->id)->stages()->get();
+        //demandez si on affiche le nom de l'évaluateur
         return view('eleves.pannel', ['stages' => $stages]);
     }
 }

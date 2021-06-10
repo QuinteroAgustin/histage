@@ -42,9 +42,8 @@ class AdminCreateUserController extends AdminUsersController
             if($request->role == 1){//admin
                 $request->session()->put('messages', ['Succes'=>'']);
             }elseif($request->role == 2){//enseignant
-                $props = New Enseignant;
-                $props->id = $id_user;
-                $props->save();
+                $request->session()->put('messages', ['Succes'=>'L\'utilisateur '.$request->email.' a été créer avec succès.']);
+                return redirect()->route('createUserEnseignant', ['id' => $id_user]);
             }elseif($request->role == 3){//Eleve
                 $request->session()->put('messages', ['Succes'=>'L\'utilisateur '.$request->email.' a été créer avec succès.']);
                 return redirect()->route('createUserEleve', ['id' => $id_user]);
@@ -64,13 +63,17 @@ class AdminCreateUserController extends AdminUsersController
         }
         return redirect()->route('createUser');
     }
-
+    /*
+    / Creation d'un élève :
+    */
     public function createUserEleve(Request $request){
         $user=User::find($request->id);
         $sections = Section::all();
         return view('admin.users.createUserEleve', ['user' => $user, 'sections' => $sections]);
     }
-
+    /*
+    / Creation d'un élève retour du formulaire ( le post ) :
+    */
     public function createUserElevePost(Request $request){
         $eleve = new Eleve;
         $eleve->id = $request->id;
@@ -85,4 +88,33 @@ class AdminCreateUserController extends AdminUsersController
         $request->session()->put('messages', ['Succes'=>'L\'élève a été créer avec succès.']);
         return redirect()->route('pannelAdmin');
     }
+
+    /*
+    / Creation d'un enseignant :
+    */
+    public function createUserEnseignant(Request $request){
+        $user=User::find($request->id);
+        $sections = Section::all();
+        return view('admin.users.createUserEnseignant', ['user' => $user, 'sections' => $sections]);
+    }
+
+    /*
+    / Creation d'un enseignant retour du formulaire ( post ) :
+    */
+    public function createUserEnseignantPost(Request $request){
+        $enseignant = New Enseignant;
+        $enseignant->id = $request->id;
+        $enseignant->libMetierEnseignant = $request->ligMetier;
+        $enseignant->save();
+        $user = Enseignant::find($request->id);
+        $user->sections()->attach($request->section, ['isRs' => $request->isRs]);
+        $user->save();
+        $request->session()->put('messages', ['Succes'=>'L\'enseignant a été créer avec succès.']);
+        return redirect()->route('pannelAdmin');
+    }
 }
+ /**
+         *$user= Enseignant::find(11);
+         *$user->sections()->attach(3, ['isRs' => 0]);
+         *$user->save();
+         */
