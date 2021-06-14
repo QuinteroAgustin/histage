@@ -64,17 +64,17 @@ class User extends Authenticatable
     //trouver comment faire pour savoir si l'user est un eleve, enseignant ou contact
     //avec une fonction
     public function eleve()
-    { 
-        return $this->hasOne(Eleve::class); 
+    {
+        return $this->hasOne(Eleve::class, 'id');
     }
 
     public function contact()
-    { 
-        return $this->hasOne(Contact::class); 
+    {
+        return $this->hasOne(Contact::class, 'id');
     }
 
     public function enseignant()
-    { 
-        return $this->hasOne(Enseignant::class); 
+    {
+        return $this->hasOne(Enseignant::class, 'id');
     }
 }

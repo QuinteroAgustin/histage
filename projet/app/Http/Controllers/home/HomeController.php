@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\home;
 
+use App\Models\User;
 use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
@@ -19,6 +20,7 @@ class HomeController extends Controller
          *$user->sections()->attach(3, ['isRs' => 0]);
          *$user->save();
          */
+        
         return view('home.accueil');
     }
 }
