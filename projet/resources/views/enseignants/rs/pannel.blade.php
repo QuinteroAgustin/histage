@@ -8,9 +8,33 @@
             <a class="bg-pink-200 mx-2 px-2 mb-2 rounded" href="#">{{ $section }}</a>
         @endforeach
         <a class="bg-pink-200 mx-2 px-2 mb-2 rounded" href="{{ route('createEntreprise') }}">Créer une Entreprises</a>
+        <a class="bg-pink-200 mx-2 px-2 mb-2 rounded" href="#">Créer un Stage</a>
     </div>
     <div class="bg-blue-200"  id="center">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, vero. Vero quo eos enim quas asperiores consequatur. Unde delectus velit earum molestias dolorem, fuga eos enim? Cumque eaque neque harum.</p>
+        @foreach ($sectionsTab as $key=>$section)
+        <div id="{{ $key }}">
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>nom</th>
+                    <th>prenom</th>
+                    <th>stage</th>
+                </tr>
+                @foreach ($listeDesEleves as $eleve)
+                    @if ($eleve->section_id == $key)
+                        <tr>
+                            <td>{{ $eleve->id }}</td>
+                            <td>{{ $eleve->user->nomUser }}</td>
+                            <td>{{ $eleve->user->prenomUser }}</td>
+                            <td><a class="bg-yellow-200 hover:bg-yellow-500 rounded px-1 mx-1" href="#">Voir stages</a></td>
+                        </tr>
+                    @endif
+                @endforeach
+            </table>
+
+        </div>
+        @endforeach
+
     </div>
 </div>
 
