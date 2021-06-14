@@ -1,215 +1,538 @@
-#------------------------------------------------------------
-#        Script MySQL.
-#------------------------------------------------------------
+-- phpMyAdmin SQL Dump
+-- version 5.1.0
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : localhost
+-- Généré le : lun. 14 juin 2021 à 10:09
+-- Version du serveur :  8.0.25
+-- Version de PHP : 7.3.24-(to be removed in future macOS)
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
-#------------------------------------------------------------
-# Table: Section
-#------------------------------------------------------------
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-CREATE TABLE Section(
-        idSection  Int  Auto_increment  NOT NULL ,
-        libSection Varchar (50) NOT NULL
-	,CONSTRAINT Section_PK PRIMARY KEY (idSection)
-)ENGINE=InnoDB;
+--
+-- Base de données : `histage`
+--
+CREATE DATABASE IF NOT EXISTS `histage` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `histage`;
 
+-- --------------------------------------------------------
 
-#------------------------------------------------------------
-# Table: Entreprise
-#------------------------------------------------------------
+--
+-- Structure de la table `anneescolaires`
+--
 
-CREATE TABLE Entreprise(
-        idEntreprise         Int  Auto_increment  NOT NULL ,
-        nomEntreprise        Varchar (50) NOT NULL ,
-        serviceEntreprise    Varchar (50) NOT NULL ,
-        missionEntreprise    Varchar (100) NOT NULL ,
-        numAdrEntreprise     Int NOT NULL ,
-        libAdrEntreprise     Varchar (50) NOT NULL ,
-        codePostalEntreprise Int NOT NULL ,
-        villeEntreprise      Varchar (50) NOT NULL ,
-        telephoneEntreprise  Varchar (12) NOT NULL ,
-        mailEntreprise       Varchar (50) NOT NULL ,
-        siretEntreprise      Varchar (30) NOT NULL
-	,CONSTRAINT Entreprise_PK PRIMARY KEY (idEntreprise)
-)ENGINE=InnoDB;
+CREATE TABLE `anneescolaires` (
+  `id` bigint UNSIGNED NOT NULL,
+  `libAnneeScolaire` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+-- --------------------------------------------------------
 
-#------------------------------------------------------------
-# Table: TypeIndicateur
-#------------------------------------------------------------
+--
+-- Structure de la table `contacts`
+--
 
-CREATE TABLE TypeIndicateur(
-        idTypeIndicateur  Int  Auto_increment  NOT NULL ,
-        libTypeIndicateur Varchar (50) NOT NULL
-	,CONSTRAINT TypeIndicateur_PK PRIMARY KEY (idTypeIndicateur)
-)ENGINE=InnoDB;
+CREATE TABLE `contacts` (
+  `id` bigint UNSIGNED NOT NULL,
+  `statusContact` varchar(1) DEFAULT NULL,
+  `fonctionContact` varchar(255) DEFAULT NULL,
+  `entreprise_id` bigint UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+-- --------------------------------------------------------
 
-#------------------------------------------------------------
-# Table: Indicateur
-#------------------------------------------------------------
+--
+-- Structure de la table `eleves`
+--
 
-CREATE TABLE Indicateur(
-        idTypeIndicateur Int NOT NULL ,
-        idIndicateur     Int NOT NULL ,
-        libIndicateur    Varchar (200) NOT NULL
-	,CONSTRAINT Indicateur_PK PRIMARY KEY (idTypeIndicateur,idIndicateur)
+CREATE TABLE `eleves` (
+  `id` bigint UNSIGNED NOT NULL,
+  `dateNaissanceEleve` date DEFAULT NULL,
+  `dateRentreeEleve` date DEFAULT NULL,
+  `numAdrEleve` int DEFAULT NULL,
+  `villeAdrEleve` varchar(255) DEFAULT NULL,
+  `libAdrEleve` varchar(255) DEFAULT NULL,
+  `codePostalAdrEleve` int DEFAULT NULL,
+  `section_id` bigint UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-	,CONSTRAINT Indicateur_TypeIndicateur_FK FOREIGN KEY (idTypeIndicateur) REFERENCES TypeIndicateur(idTypeIndicateur)
-)ENGINE=InnoDB;
+-- --------------------------------------------------------
 
+--
+-- Structure de la table `enseignants`
+--
 
-#------------------------------------------------------------
-# Table: AnneeScolaire
-#------------------------------------------------------------
+CREATE TABLE `enseignants` (
+  `id` bigint UNSIGNED NOT NULL,
+  `libMetierEnseignant` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-CREATE TABLE AnneeScolaire(
-        idAnneeScolaire  Int  Auto_increment  NOT NULL ,
-        libAnneeScolaire Varchar (50) NOT NULL
-	,CONSTRAINT AnneeScolaire_PK PRIMARY KEY (idAnneeScolaire)
-)ENGINE=InnoDB;
+-- --------------------------------------------------------
 
+--
+-- Structure de la table `enseignant_section`
+--
 
-#------------------------------------------------------------
-# Table: Stage
-#------------------------------------------------------------
+CREATE TABLE `enseignant_section` (
+  `id` bigint UNSIGNED NOT NULL,
+  `enseignant_id` bigint UNSIGNED NOT NULL,
+  `section_id` bigint UNSIGNED NOT NULL,
+  `isRs` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-CREATE TABLE Stage(
-        idStage              Int  Auto_increment  NOT NULL ,
-        titreStage           Varchar (50) NOT NULL ,
-        descriptifStage      Varchar (100) NOT NULL ,
-        dateDebutStage       Date NOT NULL ,
-        dateFinStage         Date NOT NULL ,
-        dureeHebdoStage      Int NOT NULL ,
-        dateEvalStage        Date NOT NULL ,
-        commentaireEvalStage Varchar (50) NOT NULL ,
-        idEntreprise         Int NOT NULL ,
-        idAnneeScolaire      Int NOT NULL
-	,CONSTRAINT Stage_PK PRIMARY KEY (idStage)
+-- --------------------------------------------------------
 
-	,CONSTRAINT Stage_Entreprise_FK FOREIGN KEY (idEntreprise) REFERENCES Entreprise(idEntreprise)
-	,CONSTRAINT Stage_AnneeScolaire0_FK FOREIGN KEY (idAnneeScolaire) REFERENCES AnneeScolaire(idAnneeScolaire)
-)ENGINE=InnoDB;
+--
+-- Structure de la table `entreprises`
+--
 
+CREATE TABLE `entreprises` (
+  `id` bigint UNSIGNED NOT NULL,
+  `nomEntreprise` varchar(255) DEFAULT NULL,
+  `serviceEntreprise` varchar(255) DEFAULT NULL,
+  `missionEntreprise` varchar(255) DEFAULT NULL,
+  `numAdrEntreprise` int DEFAULT NULL,
+  `libAdrEntreprise` varchar(255) DEFAULT NULL,
+  `codePostalEntreprise` int DEFAULT NULL,
+  `villeEntreprise` varchar(255) DEFAULT NULL,
+  `telephoneEntreprise` varchar(255) DEFAULT NULL,
+  `mailEntreprise` varchar(255) DEFAULT NULL,
+  `siretEntreprise` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-#------------------------------------------------------------
-# Table: Role
-#------------------------------------------------------------
+-- --------------------------------------------------------
 
-CREATE TABLE Role(
-        idRole  Int  Auto_increment  NOT NULL ,
-        libRole Varchar (50) NOT NULL
-	,CONSTRAINT Role_PK PRIMARY KEY (idRole)
-)ENGINE=InnoDB;
+--
+-- Structure de la table `indicateurs`
+--
 
+CREATE TABLE `indicateurs` (
+  `id` bigint UNSIGNED NOT NULL,
+  `libIndicateur` varchar(255) NOT NULL,
+  `typeindicateur_id` bigint UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-#------------------------------------------------------------
-# Table: Users
-#------------------------------------------------------------
+-- --------------------------------------------------------
 
-CREATE TABLE Users(
-        idUser        Int  Auto_increment  NOT NULL ,
-        mailUser      Varchar (60) NOT NULL ,
-        nomUser       Varchar (50) NOT NULL ,
-        prenomUser    Varchar (50) NOT NULL ,
-        telephoneUser Varchar (12) NOT NULL ,
-        mobileUser    Varchar (12) NOT NULL ,
-        titreUser     Varchar (5) NOT NULL ,
-        mdpUser       Varchar (255) NOT NULL ,
-        idRole        Int NOT NULL
-	,CONSTRAINT Users_PK PRIMARY KEY (idUser)
+--
+-- Structure de la table `indicateur_stage`
+--
 
-	,CONSTRAINT Users_Role_FK FOREIGN KEY (idRole) REFERENCES Role(idRole)
-)ENGINE=InnoDB;
+CREATE TABLE `indicateur_stage` (
+  `id` bigint UNSIGNED NOT NULL,
+  `indicateur_id` bigint UNSIGNED NOT NULL,
+  `stage_id` bigint UNSIGNED NOT NULL,
+  `typeindicateur_id` bigint UNSIGNED NOT NULL,
+  `repCategorieIndicateur` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-#------------------------------------------------------------
-# Table: Eleve
-#------------------------------------------------------------
+-- --------------------------------------------------------
 
-CREATE TABLE Eleve(
-        idUser             Int NOT NULL ,
-        dateNaissanceEleve Date NOT NULL ,
-        dateRentreeEleve   Date NOT NULL ,
-        numAdrEleve        Int NOT NULL ,
-        villeAdrEleve      Varchar (50) NOT NULL ,
-        libAdrEleve        Varchar (50) NOT NULL ,
-        codePostalAdrEleve Int NOT NULL ,
-        idSection          Int NOT NULL ,
-        CONSTRAINT Eleve_PK PRIMARY KEY (idUser)
+--
+-- Structure de la table `migrations`
+--
 
-	,CONSTRAINT Eleve_Users_FK FOREIGN KEY (idUser) REFERENCES Users(idUser)
-	,CONSTRAINT Eleve_Section0_FK FOREIGN KEY (idSection) REFERENCES Section(idSection)
-)ENGINE=InnoDB;
+CREATE TABLE `migrations` (
+  `id` int UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-#------------------------------------------------------------
-# Table: Enseignant
-#------------------------------------------------------------
+-- --------------------------------------------------------
 
-CREATE TABLE Enseignant(
-        idUser              Int NOT NULL ,
-        libMetierEnseignant Varchar (50) NOT NULL
-	,CONSTRAINT Enseignant_PK PRIMARY KEY (idUser)
+--
+-- Structure de la table `roles`
+--
 
-	,CONSTRAINT Enseignant_Users_FK FOREIGN KEY (idUser) REFERENCES Users(idUser)
-)ENGINE=InnoDB;
+CREATE TABLE `roles` (
+  `id` bigint UNSIGNED NOT NULL,
+  `libRole` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+-- --------------------------------------------------------
 
-#------------------------------------------------------------
-# Table: Contact
-#------------------------------------------------------------
+--
+-- Structure de la table `sections`
+--
 
-CREATE TABLE Contact(
-        idUser          Int NOT NULL ,
-        statusContact   Varchar (1) NOT NULL ,
-        fonctionContact Varchar (50) NOT NULL ,
-        idEntreprise    Int NOT NULL
-	,CONSTRAINT Contact_PK PRIMARY KEY (idUser)
+CREATE TABLE `sections` (
+  `id` bigint UNSIGNED NOT NULL,
+  `libSection` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-	,CONSTRAINT Contact_Users_FK FOREIGN KEY (idUser) REFERENCES Users(idUser)
-	,CONSTRAINT Contact_Entreprise0_FK FOREIGN KEY (idEntreprise) REFERENCES Entreprise(idEntreprise)
-)ENGINE=InnoDB;
+-- --------------------------------------------------------
 
-#------------------------------------------------------------
-# Table: concerner
-#------------------------------------------------------------
+--
+-- Structure de la table `sessions`
+--
 
-CREATE TABLE concerner(
-        idUser  Int NOT NULL ,
-        idStage Int NOT NULL
-	,CONSTRAINT concerner_PK PRIMARY KEY (idUser,idStage)
+CREATE TABLE `sessions` (
+  `id` varchar(255) NOT NULL,
+  `user_id` bigint UNSIGNED DEFAULT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `user_agent` text,
+  `payload` text NOT NULL,
+  `last_activity` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-	,CONSTRAINT concerner_Users_FK FOREIGN KEY (idUser) REFERENCES Users(idUser)
-	,CONSTRAINT concerner_Stage0_FK FOREIGN KEY (idStage) REFERENCES Stage(idStage)
-)ENGINE=InnoDB;
+-- --------------------------------------------------------
 
+--
+-- Structure de la table `stages`
+--
 
-#------------------------------------------------------------
-# Table: evaluer
-#------------------------------------------------------------
+CREATE TABLE `stages` (
+  `id` bigint UNSIGNED NOT NULL,
+  `titreStage` varchar(255) NOT NULL,
+  `descriptifStage` varchar(255) NOT NULL,
+  `dateDebutStage` date NOT NULL,
+  `dateFinStage` date NOT NULL,
+  `dureeHebdoStage` int NOT NULL,
+  `dateEvalStage` date DEFAULT NULL,
+  `commentaireEvalStage` varchar(255) DEFAULT NULL,
+  `anneescolaire_id` bigint UNSIGNED NOT NULL,
+  `entreprise_id` bigint UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-CREATE TABLE evaluer(
-        idTypeIndicateur       Int NOT NULL ,
-        idIndicateur           Int NOT NULL ,
-        idStage                Int NOT NULL ,
-        repCategorieIndicateur Bool NOT NULL
-	,CONSTRAINT evaluer_PK PRIMARY KEY (idTypeIndicateur,idIndicateur,idStage)
+-- --------------------------------------------------------
 
-	,CONSTRAINT evaluer_Indicateur_FK FOREIGN KEY (idTypeIndicateur,idIndicateur) REFERENCES Indicateur(idTypeIndicateur,idIndicateur)
-	,CONSTRAINT evaluer_Stage0_FK FOREIGN KEY (idStage) REFERENCES Stage(idStage)
-)ENGINE=InnoDB;
+--
+-- Structure de la table `stage_user`
+--
 
+CREATE TABLE `stage_user` (
+  `id` bigint UNSIGNED NOT NULL,
+  `stage_id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-#------------------------------------------------------------
-# Table: gerer
-#------------------------------------------------------------
+-- --------------------------------------------------------
 
-CREATE TABLE gerer(
-        idSection Int NOT NULL ,
-        idUser    Int NOT NULL ,
-        isRs      Bool NOT NULL
-	,CONSTRAINT gerer_PK PRIMARY KEY (idSection,idUser)
+--
+-- Structure de la table `typeindicateurs`
+--
 
-	,CONSTRAINT gerer_Section_FK FOREIGN KEY (idSection) REFERENCES Section(idSection)
-	,CONSTRAINT gerer_Enseignant0_FK FOREIGN KEY (idUser) REFERENCES Enseignant(idUser)
-)ENGINE=InnoDB;
+CREATE TABLE `typeindicateurs` (
+  `id` bigint UNSIGNED NOT NULL,
+  `libTypeIndicateur` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint UNSIGNED NOT NULL,
+  `nomUser` varchar(255) NOT NULL,
+  `prenomUser` varchar(255) NOT NULL,
+  `emailUser` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `passwordUser` varchar(255) NOT NULL,
+  `telephoneUser` varchar(255) DEFAULT NULL,
+  `mobileUser` varchar(255) DEFAULT NULL,
+  `titreUser` varchar(255) NOT NULL,
+  `role_id` bigint UNSIGNED NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `anneescolaires`
+--
+ALTER TABLE `anneescolaires`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `anneescolaires_libanneescolaire_unique` (`libAnneeScolaire`);
+
+--
+-- Index pour la table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `contacts_entreprise_id_foreign` (`entreprise_id`);
+
+--
+-- Index pour la table `eleves`
+--
+ALTER TABLE `eleves`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `eleves_section_id_foreign` (`section_id`);
+
+--
+-- Index pour la table `enseignants`
+--
+ALTER TABLE `enseignants`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `enseignant_section`
+--
+ALTER TABLE `enseignant_section`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `enseignant_section_enseignant_id_foreign` (`enseignant_id`),
+  ADD KEY `enseignant_section_section_id_foreign` (`section_id`);
+
+--
+-- Index pour la table `entreprises`
+--
+ALTER TABLE `entreprises`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `indicateurs`
+--
+ALTER TABLE `indicateurs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `indicateurs_typeindicateur_id_foreign` (`typeindicateur_id`);
+
+--
+-- Index pour la table `indicateur_stage`
+--
+ALTER TABLE `indicateur_stage`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `indicateur_stage_indicateur_id_foreign` (`indicateur_id`),
+  ADD KEY `indicateur_stage_stage_id_foreign` (`stage_id`),
+  ADD KEY `indicateur_stage_typeindicateur_id_foreign` (`typeindicateur_id`);
+
+--
+-- Index pour la table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `roles_librole_unique` (`libRole`);
+
+--
+-- Index pour la table `sections`
+--
+ALTER TABLE `sections`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sessions_user_id_index` (`user_id`),
+  ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Index pour la table `stages`
+--
+ALTER TABLE `stages`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `stages_anneescolaire_id_foreign` (`anneescolaire_id`),
+  ADD KEY `stages_entreprise_id_foreign` (`entreprise_id`);
+
+--
+-- Index pour la table `stage_user`
+--
+ALTER TABLE `stage_user`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `stage_user_stage_id_index` (`stage_id`),
+  ADD KEY `stage_user_user_id_index` (`user_id`);
+
+--
+-- Index pour la table `typeindicateurs`
+--
+ALTER TABLE `typeindicateurs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_emailuser_unique` (`emailUser`),
+  ADD KEY `users_role_id_foreign` (`role_id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `anneescolaires`
+--
+ALTER TABLE `anneescolaires`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `enseignant_section`
+--
+ALTER TABLE `enseignant_section`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `entreprises`
+--
+ALTER TABLE `entreprises`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `indicateurs`
+--
+ALTER TABLE `indicateurs`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `indicateur_stage`
+--
+ALTER TABLE `indicateur_stage`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `sections`
+--
+ALTER TABLE `sections`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `stages`
+--
+ALTER TABLE `stages`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `stage_user`
+--
+ALTER TABLE `stage_user`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `typeindicateurs`
+--
+ALTER TABLE `typeindicateurs`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD CONSTRAINT `contacts_entreprise_id_foreign` FOREIGN KEY (`entreprise_id`) REFERENCES `entreprises` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `contacts_id_foreign` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `eleves`
+--
+ALTER TABLE `eleves`
+  ADD CONSTRAINT `eleves_id_foreign` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `eleves_section_id_foreign` FOREIGN KEY (`section_id`) REFERENCES `sections` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Contraintes pour la table `enseignants`
+--
+ALTER TABLE `enseignants`
+  ADD CONSTRAINT `enseignants_id_foreign` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `enseignant_section`
+--
+ALTER TABLE `enseignant_section`
+  ADD CONSTRAINT `enseignant_section_enseignant_id_foreign` FOREIGN KEY (`enseignant_id`) REFERENCES `enseignants` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `enseignant_section_section_id_foreign` FOREIGN KEY (`section_id`) REFERENCES `sections` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `indicateurs`
+--
+ALTER TABLE `indicateurs`
+  ADD CONSTRAINT `indicateurs_typeindicateur_id_foreign` FOREIGN KEY (`typeindicateur_id`) REFERENCES `typeindicateurs` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Contraintes pour la table `indicateur_stage`
+--
+ALTER TABLE `indicateur_stage`
+  ADD CONSTRAINT `indicateur_stage_indicateur_id_foreign` FOREIGN KEY (`indicateur_id`) REFERENCES `indicateurs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `indicateur_stage_stage_id_foreign` FOREIGN KEY (`stage_id`) REFERENCES `stages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `indicateur_stage_typeindicateur_id_foreign` FOREIGN KEY (`typeindicateur_id`) REFERENCES `typeindicateurs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `stages`
+--
+ALTER TABLE `stages`
+  ADD CONSTRAINT `stages_anneescolaire_id_foreign` FOREIGN KEY (`anneescolaire_id`) REFERENCES `anneescolaires` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `stages_entreprise_id_foreign` FOREIGN KEY (`entreprise_id`) REFERENCES `entreprises` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Contraintes pour la table `stage_user`
+--
+ALTER TABLE `stage_user`
+  ADD CONSTRAINT `stage_user_stage_id_foreign` FOREIGN KEY (`stage_id`) REFERENCES `stages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `stage_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

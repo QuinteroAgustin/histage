@@ -1,11 +1,11 @@
-INSERT INTO Role(`idRole`,`libRole`)
+INSERT INTO roles(`id`,`libRole`)
 VALUES
 (1,'Admin'),
 (2,'Enseignant'),
 (3,'Eleve'),
 (4,'Contact');
 
-INSERT INTO Section(`idSection`,`libSection`)
+INSERT INTO sections(`id`,`libSection`)
 VALUES
 (1,'SIO1'),
 (2,'SIO2'),
@@ -17,72 +17,71 @@ VALUES
 (8,'ESI1'),
 (9,'ESI2');
 
-INSERT INTO Users(`idUser`, `mailUser`,`nomUser`,`prenomUser`,`telephoneUser`,`mobileUser`,`titreUser`,`mdpUser`,`idRole`)
+INSERT INTO users(`id`, `emailUser`,`nomUser`,`prenomUser`,`telephoneUser`,`mobileUser`,`titreUser`,`passwordUser`,`role_id`)
 VALUES
-(1,'yohan.marques@limayrac.fr','MARQUES','Yohan','0500000000','0624859002','M.','12345',1),
-(2,'agustin.quintero@limayrac.fr','QUINTERO','Agustin','0500000000','0615614135','M.','12345',1),
-(3,'christophe.puel@limayrac.fr','PUEL','Christophe','0500000000','0661264523','M.','12345',1),
+(1,'yohan.marques@limayrac.fr','MARQUES','Yohan','0500000000','0624859002','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',1),
+(2,'agustin.quintero@limayrac.fr','QUINTERO','Agustin','0500000000','0615614135','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',1),
+(3,'christophe.puel@limayrac.fr','PUEL','Christophe','0500000000','0661264523','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',1),
 
-(4,'akendengueph1@gmail.com','AKENDENGUE','Pierre-Honoré','0500000000','0668937013','M.','12345',3),
-(5,'mathieuarmand988@gmail.com','ARMAND','Mathieu','0500000000','0620320486','M.','12345',3),
-(6,'teo.augry@limayrac.fr','AUGRY','Téo','0500000000','0642905090','M.','12345',3),
-(7,'handball.ballon@hotmail.fr','BERTRAND','Loïc','0500000000','0682778747','M.','12345',3),
-(8,'gwena.bonnet81@gmail.com','BONNET','Gwénaël','0500000000','0604161969','M.','12345',3),
-(9,'matdegramont@gmail.com','BOUBEEDEGRAMONT','Matthieu','0500000000','0652810576','M.','12345',3),
-(10,'ytspana@gmail.com','BROTO','Jules','0500000000','0695370215','M.','12345',3),
-(11,'adriencarles12@gmail.com','CARLES','Adrien','0500000000','0681751583','M.','12345',3),
-(12,'romain.cazals@free.fr','CAZALS','Romain','0500000000','0781743672','M.','12345',3),
-(13,'dclucas31@gmail.com','DALLA-COSTA','Lucas','0500000000','0698068166','M.','12345',3),
-(14,'luc.dehez@gmail.com','DEHEZ','Luc','0500000000','0640185640','M.','12345',3),
-(15,'damiendutertre31@gmail.com','DUTERTRE','Damien','0500000000','0661185028','M.','12345',3),
-(16,'e.enjalbert12@gmail.com','ENJALBERT','Emma','0500000000','0783427578','Mme.','12345',3),
-(17,'franco-loic@orange.fr','FRANCO','Loïc','0500000000','0671062564','M.','12345',3),
-(18,'thomasfranquin@gmail.com','FRANQUIN','Thomas','0500000000','0662729865','M.','12345',3),
-(19,'axel.gagnant@gmail.com','GAGNANT','Axel','0500000000','0624624934','M.','12345',3),
-(20,'dydy97310@orange.fr','GOULT','Dylan','0500000000','0785585303','M.','12345',3),
-(21,'hugoletort@outlook.fr','LETORT','Hugo','0500000000','0662648884','M.','12345',3),
-(22,'survivorg811@gmail.com','MALGOUYRES','Guillaume','0500000000','0610042975','M.','12345',3),
-(23,'paul.meyer0031@gmail.com','MEYER','Paul','0500000000','0602264233','M.','12345',3),
-(24,'benjamin.michoux@hotmail.fr','MICHOUX','Benjamin','0500000000','0651144341','M.','12345',3),
-(25,'achillemonteil31@gmail.com','MONTEIL','Achille','0500000000','0781706046','M.','12345',3),
-(26,'david.peyrard33@gmail.com','PEYRARD','David','0500000000','0641326462','M.','12345',3),
-(27,'arnaudrabhi@hotmail.fr','RABHI','Arnaud','0500000000','0645146987','M.','12345',3),
-(28,'maryliasabatier@gmail.com','SABATIER','Marylia','0500000000','0782007284','Mme.','12345',3),
-(29,'samathy.bryan@orange.fr','SAMATHY','Bryan','0500000000','0785563324','M.','12345',3),
-(30,'charles.viala@limayrac.fr','VIALA','Charles','0500000000','0767021870','M.','12345',3),
+(4,'akendengueph1@gmail.com','AKENDENGUE','Pierre-Honoré','0500000000','0668937013','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(5,'mathieuarmand988@gmail.com','ARMAND','Mathieu','0500000000','0620320486','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(6,'teo.augry@limayrac.fr','AUGRY','Téo','0500000000','0642905090','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(7,'handball.ballon@hotmail.fr','BERTRAND','Loïc','0500000000','0682778747','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(8,'gwena.bonnet81@gmail.com','BONNET','Gwénaël','0500000000','0604161969','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(9,'matdegramont@gmail.com','BOUBEEDEGRAMONT','Matthieu','0500000000','0652810576','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(10,'ytspana@gmail.com','BROTO','Jules','0500000000','0695370215','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(11,'adriencarles12@gmail.com','CARLES','Adrien','0500000000','0681751583','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(12,'romain.cazals@free.fr','CAZALS','Romain','0500000000','0781743672','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(13,'dclucas31@gmail.com','DALLA-COSTA','Lucas','0500000000','0698068166','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(14,'luc.dehez@gmail.com','DEHEZ','Luc','0500000000','0640185640','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(15,'damiendutertre31@gmail.com','DUTERTRE','Damien','0500000000','0661185028','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(16,'e.enjalbert12@gmail.com','ENJALBERT','Emma','0500000000','0783427578','Mme.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(17,'franco-loic@orange.fr','FRANCO','Loïc','0500000000','0671062564','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(18,'thomasfranquin@gmail.com','FRANQUIN','Thomas','0500000000','0662729865','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(19,'axel.gagnant@gmail.com','GAGNANT','Axel','0500000000','0624624934','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(20,'dydy97310@orange.fr','GOULT','Dylan','0500000000','0785585303','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(21,'hugoletort@outlook.fr','LETORT','Hugo','0500000000','0662648884','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(22,'survivorg811@gmail.com','MALGOUYRES','Guillaume','0500000000','0610042975','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(23,'paul.meyer0031@gmail.com','MEYER','Paul','0500000000','0602264233','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(24,'benjamin.michoux@hotmail.fr','MICHOUX','Benjamin','0500000000','0651144341','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(25,'achillemonteil31@gmail.com','MONTEIL','Achille','0500000000','0781706046','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(26,'david.peyrard33@gmail.com','PEYRARD','David','0500000000','0641326462','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(27,'arnaudrabhi@hotmail.fr','RABHI','Arnaud','0500000000','0645146987','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(28,'maryliasabatier@gmail.com','SABATIER','Marylia','0500000000','0782007284','Mme.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(29,'samathy.bryan@orange.fr','SAMATHY','Bryan','0500000000','0785563324','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
+(30,'charles.viala@limayrac.fr','VIALA','Charles','0500000000','0767021870','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
 
-(31,'gillesdecruzel@horus-solutions.org','DECRUZE','Gilles','0500000000','0500000000','M.','12345',4),
-(32,'alexislapeze@gmail.com','LAPEZE','Alexis','0500000000','0500000000','M.','12345',4),
-(33,'wbassot@saliege.fr','BASSOT','William','0500000000','0500000000','M.','12345',4),
-(34,'alainygorra@yahoo.fr','YGORRA','Alain','0500000000','0650729570','M.','12345',4),
-(35,'froger@adista.fr','ROGER','F','0547500406','0500000000','M.','12345',4),
-(36,'cyril@davtech.info.fr','DAVANTFALCO','Cyril','0500000000','0500000000','M.','12345',4),
-(37,'florian.giral@invisiart.fr','GIRAL','Florian','0500000000','0652640916','M.','12345',4),
-(38,'marie@pixbulle.com','CICAL','Marie-Hélène','0500000000','0761911982','Mme.','12345',4),
-(39,'b.lambert@mairie-blagnac.fr','LAMBERT','Bruno','0561717230','0500000000','M.','12345',4),
-(40,'pierre.smeyers@orange.com','SMEYERS','Pierre','0500000000','0630072935','M.','12345',4),
-(41,'nicolas.gary@icam.fr','GARY','Nicolas','0500000000','0689335169','M.','12345',4),
-(42,'anthony@cortexinformatique.com','BRONNER','Anthony','0500000000','0661327225','M.','12345',4),
-(43,'s.vendeville@anras.fr','VENDEVILLE','Sophie','0561807957','0500000000','Mme.','12345',4),
-(44,'sitcom@sitcom.fr','DAHAN','Roni','0561149292','0500000000','M.','12345',4),
-(45,'0500000000','VOGEL','Yvan','0500000000','0500000000','M.','12345',4),
-(46,'home.skull@gmail.com','MUNOZ','Charlotte','0500000000','0675160016','Mme.','12345',4),
-(47,'o.molina@ledepartement82sceinfor...fr','MOLINA','Olivier','0563918321','0500000000','M.','12345',4),
-(48,'sylvain.galant@company.com','GALANT','Sylvain','0561007989','0500000000','M.','12345',4),
-(49,'marie@pixbulle.com','CICAL','Marie-Hélène','0500000000','0761911982','Mme.','12345',4),
-(50,'fabien.balet@ensiacet.fr','BALET','Fabien','0534323300','0500000000','M.','12345',4),
-(51,'mbouvart@partitio.com','BOUVART','Manuel','0500000000','0500000000','M.','12345',4);
+(31,'gillesdecruzel@horus-solutions.org','DECRUZE','Gilles','0500000000','0500000000','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(32,'alexislapeze@gmail.com','LAPEZE','Alexis','0500000000','0500000000','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(33,'wbassot@saliege.fr','BASSOT','William','0500000000','0500000000','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(34,'alainygorra@yahoo.fr','YGORRA','Alain','0500000000','0650729570','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(35,'froger@adista.fr','ROGER','F','0547500406','0500000000','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(36,'cyril@davtech.info.fr','DAVANTFALCO','Cyril','0500000000','0500000000','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(37,'florian.giral@invisiart.fr','GIRAL','Florian','0500000000','0652640916','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(38,'marie@pixbulle.com','CICAL','Marie-Hélène','0500000000','0761911982','Mme.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(39,'b.lambert@mairie-blagnac.fr','LAMBERT','Bruno','0561717230','0500000000','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(40,'pierre.smeyers@orange.com','SMEYERS','Pierre','0500000000','0630072935','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(41,'nicolas.gary@icam.fr','GARY','Nicolas','0500000000','0689335169','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(42,'anthony@cortexinformatique.com','BRONNER','Anthony','0500000000','0661327225','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(43,'s.vendeville@anras.fr','VENDEVILLE','Sophie','0561807957','0500000000','Mme.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(44,'sitcom@sitcom.fr','DAHAN','Roni','0561149292','0500000000','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(45,'vogel.yvan@limayrac.fr','VOGEL','Yvan','0500000000','0500000000','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(46,'home.skull@gmail.com','MUNOZ','Charlotte','0500000000','0675160016','Mme.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(47,'o.molina@ledepartement82sceinfor...fr','MOLINA','Olivier','0563918321','0500000000','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(48,'sylvain.galant@company.com','GALANT','Sylvain','0561007989','0500000000','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(50,'fabien.balet@ensiacet.fr','BALET','Fabien','0534323300','0500000000','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4),
+(51,'mbouvart@partitio.com','BOUVART','Manuel','0500000000','0500000000','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',4);
 
 
-INSERT INTO enseignant(`idUser`,`libMetierEnseignant`)
+INSERT INTO enseignants(`id`,`libMetierEnseignant`)
 VALUES
 ('3','BDD');
 
-INSERT INTO gerer(idSection, idUser, isRs) VALUES
+INSERT INTO enseignant_section(section_id, enseignant_id, isRs) VALUES
 (1,3, 1),
 (2,3, 1);
 
-INSERT INTO contact (idUser, statusContact, fonctionContact, idEntreprise) VALUES
+INSERT INTO contacts(id, statusContact, fonctionContact, entreprise_id) VALUES
 (31, 'A', 'NA', 1),
 (32, 'A', 'NA', 2),
 (33, 'A', 'NA', 3),
@@ -101,11 +100,10 @@ INSERT INTO contact (idUser, statusContact, fonctionContact, idEntreprise) VALUE
 (46, 'A', 'NA', 13),
 (47, 'A', 'NA', 16),
 (48, 'A', 'NA', 17),
-(49, 'A', 'NA', 13),
 (50, 'A', 'NA', 18),
 (51, 'A', 'NA', 2);
 
-INSERT INTO entreprise(idEntreprise, nomEntreprise, serviceEntreprise, missionEntreprise, numAdrEntreprise, libAdrEntreprise, codePostalEntreprise, villeEntreprise, telephoneEntreprise, mailEntreprise, siretEntreprise)
+INSERT INTO entreprises(id, nomEntreprise, serviceEntreprise, missionEntreprise, numAdrEntreprise, libAdrEntreprise, codePostalEntreprise, villeEntreprise, telephoneEntreprise, mailEntreprise, siretEntreprise)
 VALUES
 (1,'HORUS SOLUTIONS', 'NA', 'NA', 0, 'Delta poste', 0, 'LIBREVILLE', '0500000000', 'gillesdecruzel@horus-solutions.org', '11111111111111'),
 (2,'LAPEZE Alexis', 'NA', 'NA', 17, 'Impasse du cimetière Croix daurade B32', 31200, 'TOULOUSE', '0500000000', 'alexislapeze@gmail.com', '11111111111111'),
@@ -131,7 +129,7 @@ VALUES
 (22,'PARTITIO','NA','NA',8,'rue Claude Marie Perroud',31100,'TOULOUSE','0534604294','mbouvart@partitio.com','11111111111111'),
 (23,'Limayrac','NA','NA',50,'rue de limayrac',31400,'TOULOUSE','NA','NA','11111111111111');
 
-INSERT INTO Eleve(`idUser`,`dateNaissanceEleve`,`dateRentreeEleve`,`numAdrEleve`,`villeAdrEleve`,`libAdrEleve`,`codePostalAdrEleve`,`idSection`)
+INSERT INTO eleves(`id`,`dateNaissanceEleve`,`dateRentreeEleve`,`numAdrEleve`,`villeAdrEleve`,`libAdrEleve`,`codePostalAdrEleve`,`section_id`)
 VALUES
 (1, '1998-08-31', '2021-05-10', 0, 'NA', 'NA', 31000, 1),
 (2, '2001-01-11', '2021-05-10', 0, 'NA', 'NA', 31000, 1),
@@ -163,18 +161,18 @@ VALUES
 (29, '2001-01-16', '2021-05-10', 0, 'NA', 'NA', 31000, 1),
 (30, '1996-12-29', '2021-01-04', 0, 'NA', 'NA', 31000, 1);
 
-INSERT INTO anneescolaire(idAnneeScolaire, libAnneeScolaire) VALUES
+INSERT INTO anneescolaires(id, libAnneeScolaire) VALUES
 (1, '2019-2020'),
 (2, '2020-2021');
 
-INSERT INTO typeindicateur(idTypeIndicateur, libTypeIndicateur) VALUES
+INSERT INTO typeindicateurs(id, libTypeIndicateur) VALUES
 (1, 'Evaluation du comportement'),
 (2, 'Evaluation du travail realise'),
 (3, 'Futur'),
 (5, 'Epreuve E6'),
 (6, 'Commentaires autres');
 
-INSERT INTO indicateur(idTypeIndicateur, idIndicateur, libIndicateur) VALUES
+INSERT INTO indicateurs(typeindicateur_id, id, libIndicateur) VALUES
 (1, 1, 'Absences'),
 (1, 2, 'Retards'),
 (1, 3, 'Intégration au sein de l équipe'),
@@ -187,7 +185,7 @@ INSERT INTO indicateur(idTypeIndicateur, idIndicateur, libIndicateur) VALUES
 (3, 10, 'L’entreprise acceptera-t-elle cet étudiant en stage de 1ème année ? (durée de 4 à 5 semaines) une année ultérieure'),
 (4, 11, 'Le responsable acceptera-t-il de participer à l’épreuve E6 en tant que jury ?');
 
-INSERT INTO Stage(`idStage`,`titreStage`,`descriptifStage`,`dateDebutStage`,`dateFinStage`,`dureeHebdoStage`,`dateEvalStage`,`commentaireEvalStage`,`idEntreprise`,`idAnneeScolaire`)
+INSERT INTO stages(`id`,`titreStage`,`descriptifStage`,`dateDebutStage`,`dateFinStage`,`dureeHebdoStage`,`dateEvalStage`,`commentaireEvalStage`,`entreprise_id`,`anneescolaire_id`)
 VALUES
 (1,'NA','NA','2021-05-10','2021-06-20',35,'2021-08-08','NA',1,2),
 (2,'NA','NA','2021-01-04','2021-02-12',35,'2021-08-08','NA',2,2),
@@ -219,7 +217,7 @@ VALUES
 (28,'NA','NA','2021-05-10','2021-06-24',35,'2021-08-08','NA',23,2),
 (29,'NA','NA','2021-05-10','2021-06-24',35,'2021-08-08','NA',23,2);
 
-INSERT INTO concerner(idUser, idStage) VALUES
+INSERT INTO stage_user(`user_id`, `stage_id`) VALUES
 (4, 1),
 (5, 2),
 (6, 3),
