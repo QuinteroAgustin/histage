@@ -3,7 +3,7 @@
 @section('content')
 <div class="bg-red-200 h-full flex">
     <div class="flex-row m-4 p-2 bg-white">
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col justify-between items-center">
             <ul class="flex-grow">
                 <li><button class="bg-blue-200 hover:bg-blue-600 rounded mb-1 w-full" id="buttonUser">Utilisateurs</button></li>
                 <li><button class="bg-blue-200 hover:bg-blue-600 rounded mb-1 w-full" id="buttonRole">Roles</button></li>
@@ -18,7 +18,7 @@
             </ul>
         </div>
     </div>
-    <div  class="flex-row m-4 p-2 bg-green-200" id="pannelUser">
+    <div  class="flex-row overflow-y-auto m-4 p-2 bg-green-200" id="pannelUser">
         <table class="bg-yellow-200">
             <tr class="bg-gray-400 text-2xl text-white">
                 <th>id</th>

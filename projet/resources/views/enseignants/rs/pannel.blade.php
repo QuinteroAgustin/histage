@@ -5,15 +5,17 @@
 <div class="bg-red-200 h-full w-full flex">
     <div class="bg-green-200 px-2 flex flex-col" id="menuleft">
         @foreach ($sectionsTab as $section)
-            <a class="bg-pink-200 mx-2 px-2 mb-2 rounded" href="#">{{ $section }}</a>
+            <a class="bg-pink-200 mx-2 px-2 mt-1 mb-1 rounded" href="#">{{ $section }}</a>
         @endforeach
         <a class="bg-pink-200 mx-2 px-2 mb-2 rounded" href="{{ route('createEntreprise') }}">Créer une Entreprises</a>
         <a class="bg-pink-200 mx-2 px-2 mb-2 rounded" href="#">Créer un Stage</a>
     </div>
-    <div class="bg-blue-200"  id="center">
+    <div class="flex flex-col overflow-y-auto bg-blue-200"  id="center">
+
         @foreach ($sectionsTab as $key=>$section)
         <div id="{{ $key }}">
             <table>
+                <caption>{{ $section }}</caption>
                 <tr>
                     <th>id</th>
                     <th>nom</th>
@@ -21,7 +23,7 @@
                     <th>stage</th>
                 </tr>
                 @foreach ($listeDesEleves as $eleve)
-                    @if ($eleve->section_id == $key)
+                    @if ($eleve->section_id === $key)
                         <tr>
                             <td>{{ $eleve->id }}</td>
                             <td>{{ $eleve->user->nomUser }}</td>

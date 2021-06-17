@@ -17,53 +17,55 @@
         </div>
         <div class="flex-grow text-gray-400 ml-4 flex items-center space-x-4">
             <a href="{{ route('home') }}">Accueil</a>
-            @if (session()->get('user')->role_id === 1)
-            <div class="relative inline-block text-left">
-                <button id="menuadministrateur-btn">Administrateur</button>
-                <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownadministrateur">
-                    <div class="py-1">
-                        <a href="{{ route('pannelAdmin') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
-                        <a href="{{ route('createUser') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">créer un utilisateur</a>
-                        <a href="{{ route('createRole') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">créer un role</a>
-                        <a href="{{ route('createAnneeScolaire') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">créer une année</a>
-                        <a href="{{ route('createAnneeScolaire') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">créer une section</a>
+            @if(session()->exists('user'))
+                @if (session()->get('user')->role_id === 1)
+                <div class="relative inline-block text-left">
+                    <button id="menuadministrateur-btn">Administrateur</button>
+                    <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownadministrateur">
+                        <div class="py-1">
+                            <a href="{{ route('pannelAdmin') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
+                            <a href="{{ route('createUser') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">créer un utilisateur</a>
+                            <a href="{{ route('createRole') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">créer un role</a>
+                            <a href="{{ route('createAnneeScolaire') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">créer une année</a>
+                            <a href="{{ route('createSection') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">créer une section</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @endif
-            @if (session()->get('user')->role_id === 2)
-            <div class="relative inline-block text-left">
-                <button id="menuenseignant-btn">Enseignant</button>
-                <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownenseignant">
-                    <div class="py-1">
-                        <a href="{{ route('pannelEnseignant') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
-                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">notation</a>
+                @endif
+                @if (session()->get('user')->role_id === 2)
+                <div class="relative inline-block text-left">
+                    <button id="menuenseignant-btn">Enseignant</button>
+                    <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownenseignant">
+                        <div class="py-1">
+                            <a href="{{ route('pannelEnseignant') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">notation</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @endif
-            @if (session()->get('user')->role_id === 3)
-            <div class="relative inline-block text-left">
-                <button id="menuetudiant-btn">Etudiant</button>
-                <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownetudiant">
-                    <div class="py-1">
-                        <a href="{{ route('pannelEleve') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">mes stages</a>
-                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">mes contacts</a>
+                @endif
+                @if (session()->get('user')->role_id === 3)
+                <div class="relative inline-block text-left">
+                    <button id="menuetudiant-btn">Etudiant</button>
+                    <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownetudiant">
+                        <div class="py-1">
+                            <a href="{{ route('pannelEleve') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">mes stages</a>
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">mes contacts</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @endif
-            @if (session()->get('user')->role_id === 2)
-            <div class="relative inline-block text-left">
-                <button id="menurs-btn">Rs</button>
-                <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownrs">
-                    <div class="py-1">
-                        <a href="{{ route('pannelRs') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
-                        <a href="{{ route('createEntreprise') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">Créer une Entreprises</a>
-                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">Créer un Stage</a>
+                @endif
+                @if (session()->get('user')->role_id === 2)
+                <div class="relative inline-block text-left">
+                    <button id="menurs-btn">Rs</button>
+                    <div class="hidden origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" id="dropdownrs">
+                        <div class="py-1">
+                            <a href="{{ route('pannelRs') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
+                            <a href="{{ route('createEntreprise') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">Créer une Entreprises</a>
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">Créer un Stage</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+                @endif
             @endif
         </div>
         <div class="mr-5 flex items-center">
