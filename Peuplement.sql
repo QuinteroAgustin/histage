@@ -21,7 +21,7 @@ INSERT INTO users(`id`, `emailUser`,`nomUser`,`prenomUser`,`telephoneUser`,`mobi
 VALUES
 (1,'yohan.marques@limayrac.fr','MARQUES','Yohan','0500000000','0624859002','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',1),
 (2,'agustin.quintero@limayrac.fr','QUINTERO','Agustin','0500000000','0615614135','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',1),
-(3,'christophe.puel@limayrac.fr','PUEL','Christophe','0500000000','0661264523','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',1),
+(3,'christophe.puel@limayrac.fr','PUEL','Christophe','0500000000','0661264523','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',2),
 
 (4,'akendengueph1@gmail.com','AKENDENGUE','Pierre-Honoré','0500000000','0668937013','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),
 (5,'mathieuarmand988@gmail.com','ARMAND','Mathieu','0500000000','0620320486','M.','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',3),

@@ -12,7 +12,7 @@ class Enseignant extends Model
 
     public function sections()
     {
-        return $this->belongsToMany(Section::class)->withPivot('isRs');
+        return $this->belongsToMany(Section::class)->withPivot('isRs', 'id');
     }
 
     public function user()

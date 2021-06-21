@@ -40,7 +40,7 @@ CREATE TABLE `anneescolaires` (
 
 --
 -- Structure de la table `contacts`
---
+-- status = A actif, I inactif
 
 CREATE TABLE `contacts` (
   `id` bigint UNSIGNED NOT NULL,

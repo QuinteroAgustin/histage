@@ -12,7 +12,7 @@
             </ul>
             <ul class="flex-grow">
                 <li><a class="bg-blue-200 hover:bg-blue-600 rounded mb-1 px-2 w-full" href="{{ route('createUser') }}">Add User</a></li>
-                <li><a class="bg-blue-200 hover:bg-blue-600 rounded mb-1 px-2 w-full" href="{{ route('createRole') }}">Add Role</a></li>
+                <!--<li><a class="bg-blue-200 hover:bg-blue-600 rounded mb-1 px-2 w-full" href="{{ route('createRole') }}">Add Role</a></li> -->
                 <li><a class="bg-blue-200 hover:bg-blue-600 rounded mb-1 px-2 w-full" href="{{ route('createAnneeScolaire') }}">Add Annee</a></li>
                 <li><a class="bg-blue-200 hover:bg-blue-600 rounded mb-1 px-2 w-full" href="{{ route('createSection') }}">Add Section</a></li>
             </ul>

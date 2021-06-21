@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin\users;
 use App\Models\Contact;
 use App\Models\Eleve;
 use App\Models\Enseignant;
+use App\Models\Entreprise;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Section;
@@ -48,11 +49,10 @@ class AdminCreateUserController extends AdminUsersController
                 $request->session()->put('messages', ['Succes'=>'L\'utilisateur '.$request->email.' a été créer avec succès.']);
                 return redirect()->route('createUserEleve', ['id' => $id_user]);
             }elseif($request->role == 4){//contact
-                $props = New Contact;
-                $props->id = $id_user;
-                $props->save();
+                $request->session()->put('messages', ['Succes'=>'L\'utilisateur '.$request->email.' a été créer avec succès.']);
+                return redirect()->route('createUserContact', ['id' => $id_user]);
             }else{
-                User::find($id_user)->delete();
+                User::find($id_user)->delete();//si aucun role existe l'user et supprimé
                 $request->session()->put('messages', ['Erreur'=>'Le rôle n\'existe pas.']);
                 return redirect()->route('createUser');
             }
@@ -110,6 +110,29 @@ class AdminCreateUserController extends AdminUsersController
         $user->sections()->attach($request->section, ['isRs' => $request->isRs]);
         $user->save();
         $request->session()->put('messages', ['Succes'=>'L\'enseignant a été créer avec succès.']);
+        return redirect()->route('pannelAdmin');
+    }
+
+    /*
+    / Creation d'un contact retour du formulaire :
+    */
+    public function createUserContact(Request $request){
+        $user=User::find($request->id);
+        $entreprises = Entreprise::all();
+        return view('admin.users.createUserContact', ['user' => $user, 'entreprises' => $entreprises]);
+    }
+
+    /*
+    / Creation d'un contact retour du formulaire ( post ) :
+    */
+    public function createUserContactPost(Request $request){
+        $contact = New Contact;
+        $contact->id = $request->id;
+        $contact->statusContact = $request->statusContact;
+        $contact->fonctionContact = $request->fonctionContact;
+        $contact->entreprise_id = $request->entreprise_id;
+        $contact->save();
+        $request->session()->put('messages', ['Succes'=>'Le Contact a été créer avec succès.']);
         return redirect()->route('pannelAdmin');
     }
 }

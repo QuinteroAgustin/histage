@@ -77,6 +77,18 @@ Route::post('/admin/createUser/eleve', [AdminCreateUserController::class, 'creat
 
 Route::get('/admin/createUser/enseignant-{id}', [AdminCreateUserController::class, 'createUserEnseignant'])->middleware(['isAuth', 'isAdmin'])->name('createUserEnseignant');
 Route::post('/admin/createUser/enseignant', [AdminCreateUserController::class, 'createUserEnseignantPost'])->middleware(['isAuth', 'isAdmin'])->name('createUserEnseignantPost');
+
+Route::get('/admin/createUser/contact-{id}', [AdminCreateUserController::class, 'createUserContact'])->middleware(['isAuth', 'isAdmin'])->name('createUserContact');
+Route::post('/admin/createUser/contact', [AdminCreateUserController::class, 'createUserContactPost'])->middleware(['isAuth', 'isAdmin'])->name('createUserContactPost');
+
+Route::get('/admin/editUser/eleve-{id}', [AdminEditUserController::class, 'editUserEleve'])->middleware(['isAuth', 'isAdmin'])->name('editUserEleve');
+Route::post('/admin/editUser/eleve', [AdminEditUserController::class, 'editUserElevePost'])->middleware(['isAuth', 'isAdmin'])->name('editUserElevePost');
+
+Route::get('/admin/editUser/enseignant-{id}', [AdminEditUserController::class, 'editUserEnseignant'])->middleware(['isAuth', 'isAdmin'])->name('editUserEnseignant');
+Route::post('/admin/editUser/enseignant', [AdminEditUserController::class, 'editUserEnseignantPost'])->middleware(['isAuth', 'isAdmin'])->name('editUserEnseignantPost');
+
+Route::get('/admin/editUser/contact-{id}', [AdminEditUserController::class, 'editUserContact'])->middleware(['isAuth', 'isAdmin'])->name('editUserContact');
+Route::post('/admin/editUser/contact', [AdminEditUserController::class, 'editUserContactPost'])->middleware(['isAuth', 'isAdmin'])->name('editUserContactPost');
 //fin route pour l'admin
 
 
