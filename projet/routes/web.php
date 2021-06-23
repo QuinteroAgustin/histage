@@ -5,8 +5,10 @@ use App\Http\Controllers\home\HomeController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\eleve\EleveController;
 use App\Http\Controllers\enseignant\rs\RsController;
+use App\Http\Controllers\eleve\EleveEvaluationController;
 use App\Http\Controllers\enseignant\EnseignantController;
 use App\Http\Controllers\enseignant\rs\RsStageController;
+use App\Http\Controllers\eleve\EleveRenseignamentController;
 use App\Http\Controllers\admin\roles\AdminEditRoleController;
 use App\Http\Controllers\admin\users\AdminEditUserController;
 use App\Http\Controllers\users\profile\ProfileUserController;
@@ -109,4 +111,6 @@ Route::get('/enseignant', [EnseignantController::class, 'pannel'])->middleware([
 
 //Routes pour les eleves
 Route::get('/eleve', [EleveController::class, 'pannel'])->middleware(['isAuth', 'isEleve'])->name('pannelEleve');
+Route::get('/eleve/test1', [EleveEvaluationController::class, 'test'])->middleware(['isAuth'])->name('test1Eleve');
+Route::get('/eleve/test2', [EleveRenseignamentController::class, 'test'])->middleware(['isAuth'])->name('test2Eleve');
 //fin des routes pour les eleves
