@@ -8,7 +8,7 @@
             <a class="bg-pink-200 mx-2 px-2 mt-1 mb-1 rounded" href="#">{{ $section }}</a>
         @endforeach
         <a class="bg-pink-200 mx-2 px-2 mb-2 rounded" href="{{ route('createEntreprise') }}">Créer une Entreprises</a>
-        <a class="bg-pink-200 mx-2 px-2 mb-2 rounded" href="#">Créer un Stage</a>
+        <a class="bg-pink-200 mx-2 px-2 mb-2 rounded" href="{{ route('createStage') }}">Créer un Stage</a>
     </div>
     <div class="flex flex-col overflow-y-auto bg-blue-200"  id="center">
 

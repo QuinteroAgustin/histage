@@ -61,7 +61,7 @@
                         <div class="py-1">
                             <a href="{{ route('pannelRs') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">pannel</a>
                             <a href="{{ route('createEntreprise') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">Créer une Entreprises</a>
-                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">Créer un Stage</a>
+                            <a href="{{ route('createStage') }}" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200">Créer un Stage</a>
                         </div>
                     </div>
                 </div>

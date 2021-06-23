@@ -4,12 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\home\HomeController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\eleve\EleveController;
-use App\Http\Controllers\enseignant\EnseignantController;
 use App\Http\Controllers\enseignant\rs\RsController;
-use App\Http\Controllers\enseignant\rs\RsEntrepriseController;
+use App\Http\Controllers\enseignant\EnseignantController;
+use App\Http\Controllers\enseignant\rs\RsStageController;
 use App\Http\Controllers\admin\roles\AdminEditRoleController;
 use App\Http\Controllers\admin\users\AdminEditUserController;
 use App\Http\Controllers\users\profile\ProfileUserController;
+use App\Http\Controllers\enseignant\rs\RsEntrepriseController;
 use App\Http\Controllers\admin\roles\AdminCreateRoleController;
 use App\Http\Controllers\admin\users\AdminCreateUserController;
 use App\Http\Controllers\users\connexion\ConnexionUserController;
@@ -97,6 +98,9 @@ Route::get('/enseignant/rs', [RsController::class, 'pannel'])->middleware(['isAu
 //creation entreprise
 Route::get('/enseignant/rs/createEntreprise', [RsEntrepriseController::class, 'createEntreprise'])->middleware(['isAuth', 'isRs'])->name('createEntreprise');
 Route::post('/enseignant/rs/createEntreprise', [RsEntrepriseController::class, 'createEntreprisePost'])->middleware(['isAuth', 'isRs'])->name('createEntreprisePost');
+//creation de stage
+Route::get('/enseignant/rs/createStage', [RsStageController::class, 'createStage'])->middleware(['isAuth', 'isRs'])->name('createStage');
+Route::post('/enseignant/rs/createStage', [RsStageController::class, 'createStagePost'])->middleware(['isAuth', 'isRs'])->name('createStagePost');
 //fin des routes pour le rs
 
 //Routes pour les Enseignants

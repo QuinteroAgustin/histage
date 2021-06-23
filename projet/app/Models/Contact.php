@@ -12,12 +12,12 @@ class Contact extends Model
     use HasFactory;
 
     public function user()
-    { 
-        return $this->belongsTo(User::class); 
+    {
+        return $this->hasOne(User::class, 'id');
     }
 
     public function entreprise()
-    { 
-        return $this->belongsTo(Entreprise::class); 
+    {
+        return $this->belongsTo(Entreprise::class);
     }
 }

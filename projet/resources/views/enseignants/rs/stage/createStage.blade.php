@@ -35,12 +35,39 @@
                     <label class="block text-gray-600 mb-2" for="dureeStage">Durée hebdomadaire : </label>
                     <input class="border shadow py-2 px-3 text-gray-700 w-full focus:shadow-outline" type="text" name="dureeStage" id="dureeStage">
                 </div>
-                
-
-
-
-
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-green-500">Créer l'entreprise</button>
+                <div class="mb-4">
+                    <label class="block text-gray-600 mb-2" for="anneeScolaire_id">Année scolaire : </label>
+                    <select name="anneeScolaire_id" id="anneeScolaire_id">
+                        @foreach ($anneesScolaires as $anneeScolaire)
+                        <option value="{{ $anneeScolaire->id }}">{{ $anneeScolaire->libAnneeScolaire}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-600 mb-2" for="eleve_id">Choix de l'élève : </label>
+                    <select name="eleve_id" id="eleve_id">
+                        @foreach ($eleves as $eleve)
+                        <option value="{{ $eleve->id }}">{{ $eleve->user->nomUser }} {{ $eleve->user->prenomUser }} - {{ $eleve->section->libSection }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-600 mb-2" for="enseignant_id">Choix de l'enseignant : </label>
+                    <select name="enseignant_id" id="enseignant_id">
+                        @foreach ($enseignants as $enseignant)
+                        <option value="{{ $enseignant->id }}">{{ $enseignant->user->nomUser}} {{ $enseignant->user->prenomUser }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-600 mb-2" for="contact_id">Choix du contact : </label>
+                    <select name="contact_id" id="contact_id">
+                        @foreach ($contacts as $contact)
+                        <option value="{{ $contact->id }}">{{ $contact->user->nomUser}} {{ $contact->user->prenomUser }} - {{ $contact->entreprise->nomEntreprise }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-green-500">Créer le stage</button>
             </div>
         </div>
         </form>
