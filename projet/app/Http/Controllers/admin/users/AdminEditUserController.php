@@ -155,7 +155,18 @@ class AdminEditUserController extends AdminUsersController
 
     }
     public function editUserElevePost(Request $request){
-
+        $eleve = Eleve::find($request->id);
+        $eleve->dateNaissanceEleve = $request->datenaissance;
+        $eleve->dateRentreeEleve = $request->daterentree;
+        $eleve->numAdrEleve = $request->numAdr;
+        $eleve->libAdrEleve = $request->libAdr;
+        $eleve->villeAdrEleve = $request->villeAdr;
+        $eleve->codePostalAdrEleve = $request->codePostalAdr;
+        $eleve->section_id = $request->section;
+        $eleve->updated_at=now();
+        $eleve->save();
+        $request->session()->put('messages', ['Succes'=>'L\'élève à été modifier avec succès.']);
+        return redirect()->route('pannelAdmin');
     }
 
     public function editUserEnseignant(Request $request){
