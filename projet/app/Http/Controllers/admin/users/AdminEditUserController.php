@@ -192,6 +192,13 @@ class AdminEditUserController extends AdminUsersController
         return view('admin.users.editUserContact', ['user' => $user, 'contact'=> $contact, 'entreprises' => $entreprises]);
     }
     public function editUserContactPost(Request $request){
-
+        $contact = Contact::find($request->id);
+        $contact->statusContact = $request->statusContact;
+        $contact->fonctionContact = $request->fonctionContact;
+        $contact->entreprise_id = $request->entreprise_id;
+        $contact->updated_at=now();
+        $contact->save();
+        $request->session()->put('messages', ['Succes'=>'Le contact à été modifier avec succès.']);
+        return redirect()->route('pannelAdmin');
     }
 }

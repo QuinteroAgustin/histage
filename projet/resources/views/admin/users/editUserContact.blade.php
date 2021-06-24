@@ -10,7 +10,7 @@
     <div>
     <!-- Laisse la place pour le content de la page qui va etre appelé -->
     <div class="mx-auto self-center">
-        <form action="{{ route('createUserContactPost') }}" method="POST">
+        <form action="{{ route('editUserContactPost') }}" method="POST">
             @csrf
         <div class="bg-white shadow-lg max-w-lg md:flex">
             <div class="p-4 flex-1 md:flex md:flex-col justify-center">

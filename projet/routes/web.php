@@ -15,6 +15,7 @@ use App\Http\Controllers\users\profile\ProfileUserController;
 use App\Http\Controllers\enseignant\rs\RsEntrepriseController;
 use App\Http\Controllers\admin\roles\AdminCreateRoleController;
 use App\Http\Controllers\admin\users\AdminCreateUserController;
+use App\Http\Controllers\enseignant\NotationEnseignantController;
 use App\Http\Controllers\users\connexion\ConnexionUserController;
 use App\Http\Controllers\admin\sections\AdminEditSectionController;
 use App\Http\Controllers\admin\sections\AdminCreateSectionController;
@@ -107,6 +108,10 @@ Route::post('/enseignant/rs/createStage', [RsStageController::class, 'createStag
 
 //Routes pour les Enseignants
 Route::get('/enseignant', [EnseignantController::class, 'pannel'])->middleware(['isAuth', 'isEnseignant'])->name('pannelEnseignant');
+Route::get('/enseignant/notation-{id}', [NotationEnseignantController::class, 'notation'])->middleware(['isAuth', 'isEnseignant'])->name('notationEnseignant');
+
+Route::post('/enseignant/notation', [NotationEnseignantController::class, 'notationPost'])->middleware(['isAuth', 'isEnseignant'])->name('notationEnseignantPost');
+Route::get('/enseignant/notationPDF-{id}', [NotationEnseignantController::class, 'notationPDF'])->middleware(['isAuth', 'isEnseignant'])->name('notationPDFEnseignant');
 //fin des routes pour le enseignants
 
 //Routes pour les eleves

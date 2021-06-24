@@ -169,8 +169,7 @@ INSERT INTO typeindicateurs(id, libTypeIndicateur) VALUES
 (1, 'Evaluation du comportement'),
 (2, 'Evaluation du travail realise'),
 (3, 'Futur'),
-(5, 'Epreuve E6'),
-(6, 'Commentaires autres');
+(4, 'Epreuve E6');
 
 INSERT INTO indicateurs(typeindicateur_id, id, libIndicateur) VALUES
 (1, 1, 'Absences'),

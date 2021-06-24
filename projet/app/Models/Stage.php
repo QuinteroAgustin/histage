@@ -14,13 +14,13 @@ class Stage extends Model
     use HasFactory;
 
     public function entreprise()
-    { 
-        return $this->belongsTo(Entreprise::class); 
-    }   
+    {
+        return $this->belongsTo(Entreprise::class);
+    }
 
     public function anneescolaire()
-    { 
-        return $this->belongsTo(Anneescolaire::class); 
+    {
+        return $this->belongsTo(Anneescolaire::class);
     }
 
     public function users()
@@ -30,6 +30,6 @@ class Stage extends Model
 
     public function indicateurs()
     {
-        return $this->belongsToMany(Indicateur::class);
+        return $this->belongsToMany(Indicateur::class)->withPivot('repCategorieIndicateur', 'typeindicateur_id', 'id');
     }
 }

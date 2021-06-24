@@ -35,7 +35,12 @@
                         <td>{{ $user->nomUser }} {{ $user->prenomUser }} </td>
                     @endif
                 @endforeach
-                <td><a class="bg-yellow-200 rounded hover:bg-yellow-500 mx-1 px-1" href="#">Evaluer</a></button></td>
+                @if ($stage->dateEvalStage != null)
+                <td><a class="bg-yellow-200 rounded hover:bg-yellow-500 mx-1 px-1" href="{{ route('notationPDFEnseignant', ['id' => $stage->id]) }}">PDF</a></button></td>
+                @else
+                <td><a class="bg-yellow-200 rounded hover:bg-yellow-500 mx-1 px-1" href="{{ route('notationEnseignant', ['id' => $stage->id]) }}">Evaluer</a></button></td>
+                @endif
+
             </tr>
             @endforeach
         </table>
