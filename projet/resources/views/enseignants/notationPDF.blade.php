@@ -65,7 +65,7 @@
             <table>
                 <tr>
                     <th>{{ $typeindicateur->libTypeIndicateur }}</th>
-                    <th>Status</th>
+                    <th style="text-align:center;">Status</th>
                 </tr>
                 @foreach ($stage->indicateurs as $indicateur)
                     @if($indicateur->typeindicateur_id == $typeindicateur->id)
