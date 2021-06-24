@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\enseignant;
 
-use App\Models\Stage;
-use App\Models\Typeindicateur;
-use Illuminate\Http\Request;
 use Dompdf\Dompdf;
+use App\Models\Stage;
+use Illuminate\Http\Request;
+use App\Models\Typeindicateur;
 
 class NotationEnseignantController extends EnseignantController
 {
@@ -48,17 +48,18 @@ class NotationEnseignantController extends EnseignantController
 
     public function notationPDF(Request $request){
         $stage = Stage::find($request->id);
-        // instantiate and use the dompdf class
+        $typeindicateurs=Typeindicateur::all();
+        $css='<link rel="stylesheet" href="'.asset('css/app.css').'">';
+        $img = '<img src="'.asset('/images/logo-text.png').'">';
+        //instantiate and use the dompdf class
         $dompdf = new Dompdf();
-        $dompdf->loadHtml(view('enseignants.notationPDF', ['stage' => $stage]));
-
+        $dompdf->loadHtml(view('enseignants.notationPDF', ['stage' => $stage, 'typeindicateurs' => $typeindicateurs, 'img' => $img, 'css' => $css]));
         // (Optional) Setup the paper size and orientation
         $dompdf->setPaper('A4');
-
         // Render the HTML as PDF
         $dompdf->render();
-
         // Output the generated PDF to Browser
         $dompdf->stream();
     }
+
 }

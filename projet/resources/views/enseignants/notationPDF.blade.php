@@ -4,67 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>PDF-Notation</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <title>{{ $stage->titreStage }} - Notation</title>
+    {!! $css !!}
 </head>
 <body>
-    <div class="pl-5 flex flex-col max-w-3xl">
-        <div class="flex flex-grow items-center">
-            <div><img class="h-20" src="/images/logo-text.png" alt="LOGO"></div>
-            <div class="font-bold text-2xl "><p>CONVENTION DE STAGE</p></div>
-        </div>
-        <div>
-            <div class="font-bold"><p>L'étudiant :</p></div>
-            <div class="border border-black">
-                <p>Nom : ##############</p>
-                <p>Prénom : ##############</p>
-                <p>Classe : ##############</p>
-                <p>Adresse de résidence : #################</p>
-                <p>Tél : #######</p>
-                <p>Dates du stage : ################# </p>
-                <p>Durée de travail hebdomadaire : # heures</p>
+    <div class="">
+        <div class="">
+            <div class="flex flex-grow justify-items-center justify-between">
+                <div class="w-52 h-20">{!! $img !!} </div>
+                <div>Fiche d'évaluation stage</div>
             </div>
-        </div>
-        <div>
-            <div class="font-bold"><p>L'organisme :</p></div>
-            <div class="border border-black">
-                <p class="font-bold">Nom de l'Organisme signataire de la convention :</p>
-                <p>##########################################</p>
-                <p>Adresse : ################################</p>
-                <p>Code postal : ################</p>
-                <p>Ville : ################</p>
-                <p>Tél : ################</p>
-                <p>Fax : ################</p>
-                <p>N° SIRET : ################</p>
-                <p>Mission de cet organisme :</p>
-                <p>#######################################</p>
-                <p class="font-bold">Nom du responsable de l'organisme :</p>
-                <p>M. ################   ################</p>
-                <p>Fonction :</p>
-                <p>################################################</p>
-            </div>
-        </div>
-        <div>
-            <div>
-                <p class="font-bold">Nom du tuteur de stage :</p>
-                <p>M. ##################</p>
-                <p>Fonction : </p>
-                <p>Tél : ##############</p>
-                <p>E-mail : ############@#############.##</p>
-            </div>
-        </div>
-        <div>
-            <div>
-                <p>##########################################</p>
-            </div>
-            <div class="border border-black">
-                <p>Date : ##/##/####</p>
-                <p>Nom de l'enseignant référent : ###################</p>
-                <p>Signature du professeur responsable :</p>
-                <p>#################</p>
-            </div>
+            <div>{{ $stage->anneescolaire->libAnneeScolaire }}</div>
+            <hr>
         </div>
 
+        <div class="">
+            @foreach ($stage->users as $user)
+                @if ($user->role_id == 2)
+                    <p>Visite</p>
+                    <p>Nom du professeur: {{ $user->titreUser }} {{ $user->nomUser }} {{ $user->prenomUser }}</p>
+                    <p>Date: {{ $stage->dateEvalStage }}</p>
+                @endif
+            @endforeach
+            <hr>
+            <div class="">
+                <div id="gauche" style="width:40%; float:left; margin:0;">
+                    @foreach ($stage->users as $user)
+                        @if ($user->role_id == 3)
+                            <p>Eleve</p>
+                            <p>Nom: {{ $user->titreUser }} {{ $user->nomUser }}</p>
+                            <p>Prénom: {{ $user->prenomUser }}</p>
+                            <p>Tél: {{ $user->telephoneUser }}</p>
+                            <p>Port: {{ $user->mobileUser }}</p>
+                        @endif
+                    @endforeach
+                </div>
+                <div id="droite" style="float:right; width:60%; margin:0; padding: 0 0 0 1em;">
+                    <p>Entreprise</p>
+                    <p>Nom: {{ $stage->entreprise->nomEntreprise }}</p>
+                    <p>Adresse: {{ $stage->entreprise->numAdrEntreprise }} {{ $stage->entreprise->libAdrEntreprise }} {{ $stage->entreprise->codePostalEntreprise }} {{ $stage->entreprise->villeEntreprise }}</p>
+                    <p>Tél: {{ $stage->entreprise->telephoneEntreprise }}</p>
+                </div>
+            </div>
+            <hr>
+            @foreach ($stage->users as $user)
+                @if ($user->role_id == 4)
+                    <p>Maitre de stage</p>
+                    <p>Nom: {{ $user->titreUser }} {{ $user->nomUser }} {{ $user->prenomUser }}</p>
+                    <p>Fonction: {{ $user->contact->fonctionContact }}</p>
+                    <p>Tél: {{ $user->telephoneUser }}</p>
+                    <p>Port: {{ $user->mobileUser }}</p>
+                    <p>Mail: {{ $user->emailUser }}</p>
+                @endif
+            @endforeach
+            <hr>
+        </div>
+
+        <div class="">
+            @foreach ($typeindicateurs as $typeindicateur)
+            <table>
+                <tr>
+                    <th>{{ $typeindicateur->libTypeIndicateur }}</th>
+                    <th>Status</th>
+                </tr>
+                @foreach ($stage->indicateurs as $indicateur)
+                    @if($indicateur->typeindicateur_id == $typeindicateur->id)
+                    <tr>
+                        <td>{{ $indicateur->libIndicateur }}</td>
+                        <td>@if ($indicateur->pivot->repCategorieIndicateur == 0)  Non validé @endif</td>
+                        <td>@if ($indicateur->pivot->repCategorieIndicateur == 1)  Validé @endif</td>
+                    </tr>
+                    @endif
+                @endforeach
+            </table>
+            <hr>
+            @endforeach
+            <p>Commentaire : {{ $stage->commentaireEvalStage }}</p>
+        </div>
     </div>
 </body>
 </html>

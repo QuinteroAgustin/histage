@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '6df26ee87da31576a522a16b7010dd7a05a7914f',
+    'reference' => '7f5e5cf9a6bd62ca344193c620caac2807f7ca0e',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -19,6 +19,15 @@
       array (
       ),
       'reference' => '9cb795bf30988e8c96dd3c40623c48a877bc6714',
+    ),
+    'barryvdh/laravel-dompdf' => 
+    array (
+      'pretty_version' => 'v0.9.0',
+      'version' => '0.9.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5b99e1f94157d74e450f4c97e8444fcaffa2144b',
     ),
     'brick/math' => 
     array (
@@ -445,7 +454,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '6df26ee87da31576a522a16b7010dd7a05a7914f',
+      'reference' => '7f5e5cf9a6bd62ca344193c620caac2807f7ca0e',
     ),
     'laravel/sail' => 
     array (
